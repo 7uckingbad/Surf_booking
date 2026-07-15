@@ -6,8 +6,10 @@ import "./styles/App.scss";
 function App() {
   return (
     <>
-      <Header />
-      <Hero />
+      <div className="heroSection">
+        <Hero />
+        <Header />
+      </div>
       <IntroSection />
     </>
   );
