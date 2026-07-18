@@ -22,17 +22,27 @@
       cursor: pointer;
       font-size: 17px;
       color: #09101e;
-      font-family: "SF Pro Text", sans-serif;
+      font-family: "satoshi", serif;
 
       .li {
-        list-style-type: none;
-      }
-      a {
-        transition: color 0.5s ease;
-        &:hover {
-          color: #ffffff;
+        list-style: none;
+        a {
+          display: inline-block;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          padding-left: 20px;
+          padding-right: 20px;
+          border-radius: 100px;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: #00bab9;
+          }
         }
       }
     }
   }
+}
+.activeLink {
+  background-color: #00bab9;
 }
