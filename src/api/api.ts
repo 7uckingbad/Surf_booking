@@ -15,9 +15,7 @@ export const getWeather = async () => {
 
 export const getPacks = async (page = 0, size = 10) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/packs?page=${page}&size=${size}`,
-    );
+    const response = await fetch(`${BASE_URL}/packs?page=${page}&size=${size}`);
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
     }

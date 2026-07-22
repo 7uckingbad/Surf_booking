@@ -1,24 +1,24 @@
 .header {
   position: absolute;
+  // position: fixed;
   top: 34px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 10;
   .navigation {
-    border: 1px solid black;
     border-radius: 100px;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 20px 90px;
+    background-color: #ffffff;
+    padding: 6px;
+    display: flex;
     display: flex;
     align-items: center;
+    justify-content: center;
     .ul {
       display: flex;
       flex-direction: row;
-      gap: 50px;
+      gap: 12px;
       cursor: pointer;
       font-size: 17px;
       color: #09101e;
@@ -26,12 +26,13 @@
 
       .li {
         list-style: none;
+        font-weight: 600;
         a {
           display: inline-block;
-          padding-top: 15px;
-          padding-bottom: 15px;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-left: 32px;
+          padding-right: 32px;
           border-radius: 100px;
           transition: background-color 0.2s ease;
 

@@ -8,6 +8,16 @@ export const Header = () => {
         <ul className={styles.ul}>
           <li className={styles.li}>
             <NavLink
+              to="/home"
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.link
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className={styles.li}>
+            <NavLink
               to="/forecast"
               className={({ isActive }) =>
                 isActive ? styles.activeLink : styles.link

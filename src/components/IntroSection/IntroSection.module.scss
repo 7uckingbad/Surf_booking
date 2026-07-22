@@ -16,9 +16,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 430px;
+      gap: 32px;
       .introText {
-        margin-top: 32px;
         font-family: "satoshi", serif;
         font-size: 20px;
         line-height: 150%;
@@ -27,6 +26,7 @@
       }
       .forecastButton {
         font-family: "satoshi", serif;
+        font-weight: 700;
         font-size: 20px;
         line-height: 120%;
         letter-spacing: 0%;
@@ -38,11 +38,11 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        padding: 12px 24px;
+        padding: 20px;
         cursor: pointer;
         transition: background-color 0.5s ease;
         align-self: flex-start;
-        width: fit-content;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 
         &:hover {
           background-color: #00a885;
@@ -51,19 +51,36 @@
           background-color: #005454;
           transform: scale(0.97);
         }
-
-        .butImg {
-          width: 24px;
-          height: 24px;
-          flex-shrink: 0;
-        }
       }
     }
+  }
+}
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 
-    img {
-      margin-top: 32px;
-      height: 400px;
-      object-fit: cover;
+  .featureItem {
+    font-family: "satoshi", serif;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    .featureIcon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .featureTitle {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 140%;
+      letter-spacing: 0%;
+    }
+    .featureDescription {
+      font-size: 12px;
+      line-height: 150%;
+      letter-spacing: 0%;
+      font-weight: 400;
     }
   }
 }

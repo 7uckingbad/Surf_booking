@@ -1,0 +1,46 @@
+:global(.rdp-root) {
+  --rdp-accent-color: #00bab9;
+}
+:global(.rdp-caption_label) {
+  font-size: 32px;
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+}
+:global(.rdp-root) {
+  border: 1px solid #ffffff;
+  box-shadow: 0 12px 64px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  padding: 48px;
+  width: fit-content;
+}
+:global(.rdp-month_caption) {
+  padding-right: 80px;
+}
+:global(.rdp-weekday) {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  color: #78838c;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  font-family: "satoshi", serif;
+}
+:global(.rdp-chevron) {
+  fill: #09101e;
+}
+:global(.rdp-selected) {
+  :global(.rdp-day_button) {
+    background-color: #00b807;
+    color: #ffffff;
+    border-radius: 100px;
+    border: none;
+  }
+}
+:global(.rdp-day) {
+  font-family: "satoshi", serif;
+  font-weight: 700;
+}
+:global(.rdp-outside .rdp-day_button) {
+  color: #78838c;
+}
+

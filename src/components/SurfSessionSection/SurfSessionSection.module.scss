@@ -1,0 +1,31 @@
+.mainSection {
+  margin: 120px;
+
+  .h2Title {
+    font-family: "Dela Gothic One", sans-serif;
+    font-size: 40px;
+  }
+  .twoColumns {
+    display: flex;
+    gap: 150px;
+    align-items: flex-start;
+
+    .h3Title {
+      font-family: "satoshi", serif;
+      font-size: 32px;
+      line-height: 120%;
+      letter-spacing: 0%;
+      margin-top: 50px;
+    }
+    .text {
+      font-family: "SF Pro Text", sans-serif;
+      font-size: 20px;
+      line-height: 150%;
+      letter-spacing: 0%;
+      margin-top: 12px;
+    }
+  }
+}
+.calendar {
+  margin-top: 32px;
+}
