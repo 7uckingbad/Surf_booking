@@ -22,7 +22,7 @@ export const SurfSessionSection = () => {
   );
 
   const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [_loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadWeather = async () => {

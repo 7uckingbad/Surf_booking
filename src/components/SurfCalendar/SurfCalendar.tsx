@@ -1,6 +1,6 @@
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
-import styles from "./SurfCalendar.module.scss";
+import "./SurfCalendar.module.scss";
 
 interface SurfCalendarProps {
   selected: Date | undefined;
