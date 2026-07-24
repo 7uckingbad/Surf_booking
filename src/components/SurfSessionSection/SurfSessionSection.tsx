@@ -6,12 +6,22 @@ import { WavesChart } from "../WavesChart/WavesChart";
 import { format, parseISO } from "date-fns";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
 
+interface WeatherData {
+  date: string;
+  title: string;
+  waterTemperature: number;
+  bestTime: string;
+  status: string;
+  description: string;
+  chartData: number[];
+}
+
 export const SurfSessionSection = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
     new Date(),
   );
 
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
