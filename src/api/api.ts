@@ -1,8 +1,11 @@
 const BASE_URL = "http://localhost:8088/api";
 
-export const getWeather = async () => {
+export const getWeather = async (date?: string) => {
   try {
-    const response = await fetch(`${BASE_URL}/weather`);
+    const url = date
+      ? `${BASE_URL}/weather?date=${date}`
+      : `${BASE_URL}/weather`;
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
     }
