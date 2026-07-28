@@ -34,6 +34,7 @@
     color: #ffffff;
     border-radius: 100px;
     border: none;
+    // padding: 20px;
   }
 }
 :global(.rdp-day) {
@@ -42,4 +43,7 @@
 }
 :global(.rdp-outside .rdp-day_button) {
   color: #78838c;
+}
+:global(.rdp-day_button) {
+  position: relative;
 }

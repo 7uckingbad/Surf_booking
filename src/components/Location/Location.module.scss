@@ -1,0 +1,99 @@
+.locationSection {
+  height: 600px;
+  width: 100%;
+  margin-top: 113px;
+  position: relative;
+
+  .infoCard {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 40px;
+    width: 532px;
+    height: 542px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .infoCardTitle {
+      font-family: "Dela Gothic One", serif;
+      color: #09101e;
+      font-size: 40px;
+      line-height: 120%;
+      letter-spacing: 0%;
+    }
+    .infoCardLocationText {
+      color: #09101e;
+      font-size: 32px;
+      font-family: "satoshi", serif;
+      line-height: 130%;
+      letter-spacing: 0%;
+      font-weight: 700;
+    }
+    .infoCardText {
+      color: #09101e;
+      font-size: 20px;
+      line-height: 150%;
+      letter-spacing: 0%;
+      font-family: "satoshi", serif;
+    }
+  }
+}
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
+  .detailItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: #09101e;
+    font-family: "satoshi", serif;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0%;
+  }
+}
+.detailsBlockButton {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  align-self: flex-start;
+  font-family: "satoshi", serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0%;
+  border: 1px solid white;
+  border-radius: 100px;
+  background-color: #00bab9;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  &:hover {
+    background-color: #00a885;
+  }
+  &:active {
+    background-color: #005454;
+    transform: scale(0.97);
+  }
+  .img {
+    width: 24px;
+    height: 24px;
+  }
+}

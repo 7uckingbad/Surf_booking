@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { SurfCalendar } from "../SurfCalendar/SurfCalendar";
 import styles from "./SurfSessionSection.module.scss";
-import { getWeather } from "../../api/api";
+import { getWeather, getWeatherRange } from "../../api/api";
 import { WavesChart } from "../WavesChart/WavesChart";
-import { format, parseISO } from "date-fns";
+import { addDays, format, parseISO } from "date-fns";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
+import type { WeatherStatus } from "../../api/utils/getStatusColor";
 
 interface WeatherData {
   date: string;
@@ -23,6 +24,17 @@ export const SurfSessionSection = () => {
 
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [_loading, setLoading] = useState(true);
+  const [weatherRange, setWeatherRange] = useState<WeatherStatus[]>([]);
+
+  useEffect(() => {
+    const loadRange = async () => {
+      const today = format(new Date(), "yyyy-MM-dd");
+      const eightDaysLater = format(addDays(new Date(), 7), "yyyy-MM-dd");
+      const data = await getWeatherRange(today, eightDaysLater);
+      setWeatherRange(data || []);
+    };
+    loadRange();
+  }, []);
 
   useEffect(() => {
     const loadWeather = async () => {
@@ -55,7 +67,11 @@ export const SurfSessionSection = () => {
             forecast data and check gear availability in our camp.
           </p>
           <div className={styles.calendar}>
-            <SurfCalendar selected={selectedDate} onSelect={setSelectedDate} />
+            <SurfCalendar
+              selected={selectedDate}
+              onSelect={setSelectedDate}
+              weatherRange={weatherRange}
+            />
           </div>
         </div>
 
@@ -78,7 +94,13 @@ export const SurfSessionSection = () => {
             {weather?.description}
           </p>
           <div className={styles.wavesChart}>
-            {weather && <WavesChart chartData={weather.chartData} />}
+            {weather && (
+              <WavesChart
+                chartData={weather.chartData}
+                status={weather.status}
+                description={weather.description}
+              />
+            )}
           </div>
 
           <button className={styles.chartButton}>
