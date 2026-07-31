@@ -47,13 +47,13 @@ export const Header = () => {
               Location
             </NavLink> */}
             <Link
-              to="location" // id секции, куда нужно скроллить
-              spy={true} // Включает отслеживание скролла (для подсветки)
-              smooth={true} // Плавная прокрутка
-              offset={-70} // Отступ сверху (если есть фиксированная шапка, чтобы не перекрывать контент)
-              duration={1000} // Длительность скролла в миллисекундах
-              activeClass={styles.activeLink} // Класс, который добавится при активной секции
-              className={styles.link} // Обычный класс ссылки
+              to="location"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={1000}
+              activeClass={styles.activeLink}
+              className={styles.link}
             >
               Location
             </Link>
