@@ -61,6 +61,20 @@ export const SurfCalendar = ({
           DayButton: CustomDayButton,
         }}
       />
+      {/* <DayPicker
+        mode="single"
+        selected={selected}
+        onSelect={onSelect}
+        weekStartsOn={1}
+        showOutsideDays={true}
+        defaultMonth={new Date(2026, 7)} // август
+        startMonth={new Date(2026, 7)}
+        endMonth={new Date(2026, 7)}
+        disableNavigation={true}
+        components={{
+          DayButton: CustomDayButton,
+        }}
+      /> */}
     </div>
   );
 };

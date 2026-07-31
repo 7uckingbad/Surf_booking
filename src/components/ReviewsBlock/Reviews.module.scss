@@ -1,0 +1,96 @@
+.reviewsSection {
+  margin-top: 120px;
+  margin-left: 120px;
+  margin-right: 120px;
+  .textBlock {
+    max-width: 950px;
+    .reviewsTitle {
+      color: #09101e;
+      font-size: 40px;
+      line-height: 120%;
+      letter-spacing: 0%;
+      font-family:
+        "Dela Gothic One",
+        s serif;
+    }
+    .reviewsText {
+      margin-top: 32px;
+      font-family: "satoshi", serif;
+      font-size: 20px;
+      line-height: 150%;
+      letter-spacing: 0%;
+      color: #09101e;
+    }
+    .rating {
+      margin-top: 50px;
+      font-family: "satoshi", serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 120%;
+      color: #09101e;
+    }
+  }
+}
+
+.reviewsScroll {
+  margin-top: 32px;
+  .shareCard {
+    width: 280px;
+    height: 354px;
+    background-color: #dae5eb;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    cursor: pointer;
+
+    .shareButton {
+      border-radius: 16px;
+      padding: 12px;
+      background-color: #ffffff;
+      border: none;
+      font-family: "satoshi", serif;
+      font-size: 18px;
+      line-height: 140%;
+      color: #09101e;
+      font-weight: 700;
+      width: 265px;
+      height: 49px;
+    }
+  }
+}
+
+.reviewsScroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 16px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reviewCard {
+    flex-shrink: 0;
+    width: 280px;
+    height: auto;
+    border-radius: 16px;
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .shareCard {
+    flex-shrink: 0;
+    width: 280px;
+  }
+}

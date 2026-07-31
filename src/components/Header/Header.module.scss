@@ -1,6 +1,7 @@
 .header {
-  position: absolute;
-  // position: fixed;
+  // position: absolute;
+  transition: all 0.3s ease;
+  position: fixed;
   top: 34px;
   left: 0;
   right: 0;

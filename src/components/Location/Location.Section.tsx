@@ -27,7 +27,7 @@ const handleOpenMaps = () => {
 export const LocationSection = () => {
   console.log(import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
   return (
-    <section className={styles.locationSection}>
+    <section className={styles.locationSection} id="location">
       <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <GoogleMap
           mapContainerStyle={containerStyle}
