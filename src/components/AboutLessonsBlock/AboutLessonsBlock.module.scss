@@ -1,0 +1,93 @@
+.AboutLessonsBlock {
+  margin-top: 120px;
+  margin-right: 120px;
+  margin-left: 120px;
+  .aboutLessonsTitle {
+    color: #09101e;
+    font-size: 40px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    font-family: "Dela Gothic One", serif;
+  }
+  .twoColumns {
+    margin-top: 50px;
+    display: flex;
+    gap: 24px;
+
+    .firstColumn {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      .firsstColumnText {
+        font-family: "satoshi", serif;
+        font-size: 20px;
+        line-height: 150%;
+        color: #09101e;
+      }
+    }
+  }
+}
+
+.statsRow {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .statItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .statValue {
+    font-family: "satoshi", serif;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 130%;
+    color: #09101e;
+  }
+  .statLabel {
+    font-size: 20px;
+    line-height: 150%;
+    font-family: "satoshi", serif;
+    color: #09101e;
+  }
+}
+
+.secondColumn {
+  flex: 1;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .secondColumnImg {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+  .aboutText {
+    margin-top: auto;
+
+    .aboutTitle {
+      font-family: "satoshi", serif;
+      font-weight: 900;
+      font-size: 28px;
+      line-height: 130%;
+      color: #09101e;
+    }
+    .secondColumnText {
+      font-size: 20px;
+      line-height: 150%;
+      font-family: "satoshi", serif;
+      color: #09101e;
+    }
+  }
+}

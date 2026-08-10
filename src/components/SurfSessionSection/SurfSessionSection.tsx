@@ -23,7 +23,7 @@ export const SurfSessionSection = () => {
   );
 
   const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [_loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [weatherRange, setWeatherRange] = useState<WeatherStatus[]>([]);
 
   useEffect(() => {
@@ -94,7 +94,17 @@ export const SurfSessionSection = () => {
             {weather?.description}
           </p>
           <div className={styles.wavesChart}>
-            {weather && (
+            {/* {weather && (
+              <WavesChart
+                chartData={weather.chartData}
+                status={weather.status}
+                description={weather.description}
+              />
+            )} */}
+            {loading && (
+              <p className={styles.loadingText}>Loading forecast...</p>
+            )}
+            {!loading && weather && (
               <WavesChart
                 chartData={weather.chartData}
                 status={weather.status}

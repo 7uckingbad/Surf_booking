@@ -1,7 +1,8 @@
 import styles from "./Footer.module.scss";
-import footerImg from "../../assets/footerImg/footerImg.svg";
+import footerImg from "../../assets/footerImg/footerNewLogo.svg";
 import instImg from "../../assets/footerImg/instagramm.svg";
 import telegaImg from "../../assets/footerImg/telega.svg";
+import emailImg from "../../assets/footerImg/mailIcon.svg";
 import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
@@ -9,13 +10,14 @@ export const Footer = () => {
     <section className={styles.footer}>
       <div className={styles.threeColumns}>
         <div className={styles.content}>
-          <h2 className={styles.footerTitle}>Freedom Surf</h2>
-          <p className={styles.mainText}>Ride the perfect wave.</p>
+          {/* <h2 className={styles.footerTitle}>Freedom Surf</h2> */}
+
           <img
             src={footerImg}
             alt="Footer Image"
             className={styles.footerImage}
           />
+          <p className={styles.mainText}>Ride the perfect wave.</p>
         </div>
 
         <div className={styles.navigation}>
@@ -39,8 +41,9 @@ export const Footer = () => {
         <div className={styles.connect}>
           <h2 className={styles.navTitle}>Connect</h2>
           <ul className={styles.navList}>
-            <li className={styles.liText}>
-              <a href="" type="email">
+            <li className={styles.liFlex}>
+              <img src={emailImg} alt="" />
+              <a href="" type="email" className={styles.liText}>
                 hello@swellstatus.com
               </a>
             </li>

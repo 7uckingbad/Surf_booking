@@ -60,15 +60,15 @@ export const LocationSection = () => {
         <div className={styles.detailsList}>
           <div className={styles.detailItem}>
             <img src={busImg} alt="" className={styles.detailimage} />
-            Bus: 1 hour from Lisbon (Route 788)
+            <strong>Bus:</strong> 1 hour from Lisbon (Route 788)
           </div>
           <div className={styles.detailItem}>
             <img src={carImg} alt="" className={styles.detailimage} />
-            Parking: Free on-site parking available
+            <strong>Parking:</strong> Free on-site parking available
           </div>
           <div className={styles.detailItem}>
             <img src={locationImg} alt="" className={styles.detailimage} />
-            Address: Av. do Mar 24, Peniche, Portugal
+            <strong>Address:</strong> Av. do Mar 24, Peniche, Portugal
           </div>
         </div>
 

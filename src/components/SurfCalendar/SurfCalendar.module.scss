@@ -4,15 +4,16 @@
 
 :global(.rdp-root) {
   --rdp-accent-color: #00bab9;
-  width: fit-content;
   border: 1px solid #ffffff;
   box-shadow: 0 12px 64px 0 rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   padding: 48px;
   box-sizing: border-box;
+  width: 511px;
+  height: 511px;
 }
 :global(.rdp-caption_label) {
-  font-size: 32px;
+  font-size: 24px;
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
 }
@@ -30,11 +31,10 @@
 }
 :global(.rdp-selected) {
   :global(.rdp-day_button) {
-    background-color: #00b807;
-    color: #ffffff;
+    background-color: #d6f0f0;
+    color: black;
     border-radius: 100px;
     border: none;
-    // padding: 20px;
   }
 }
 :global(.rdp-day) {
@@ -46,4 +46,13 @@
 }
 :global(.rdp-day_button) {
   position: relative;
+}
+:global(.rdp-month_grid) {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+}
+
+:global(.rdp-nav) {
+  gap: 50px;
 }

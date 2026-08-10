@@ -1,13 +1,16 @@
 import styles from "./Hero.module.scss";
-import vector from "../../assets/IntroSectionImages/Vector.svg";
-import video from "../../assets/waves/fullHD.mp4";
+import heroImage from "../../assets/heroLogo/herobackGround.svg";
+import buttonImg from "../../assets/heroLogo/heroButton.svg";
+import heroLogo from "../../assets/heroLogo/mainLogo.svg";
 
 export const Hero = () => {
   return (
     <section className={styles.hero}>
-      <video autoPlay loop muted playsInline className={styles.heroVideo}>
+      {/* <video autoPlay loop muted playsInline className={styles.heroVideo}>
         <source src={video} />
-      </video>
+      </video> */}
+      <img src={heroLogo} alt="" className={styles.heroLogo} />
+      <img src={heroImage} alt="" className={styles.heroImage} />
       <div className={styles.heroContent}>
         <h1 className={styles.title}>FREEDOM SURF</h1>
         <p className={styles.pText}>
@@ -16,7 +19,7 @@ export const Hero = () => {
       </div>
       <button className={styles.swellButton}>
         Rent Now
-        <img src={vector} alt="Buttom Image" className={styles.img} />
+        <img src={buttonImg} alt="Buttom Image" className={styles.img} />
       </button>
     </section>
   );

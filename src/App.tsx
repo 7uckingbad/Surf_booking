@@ -1,5 +1,7 @@
+import { AboutLessonsBlock } from "./components/AboutLessonsBlock/AboutLessonsBlock";
 import { BenefitsBlock } from "./components/BenefitsBlock/BenefitsBlock";
 import { ChoosePackSection } from "./components/ChoosePackSection/ChoosePackSection";
+import { FlexibleSchedule } from "./components/FlexibleSchedule/FlexibleSchedule";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
 import { Hero } from "./components/Hero/Hero";
@@ -18,7 +20,9 @@ function App() {
       <IntroSection />
       <SurfSessionSection />
       <ChoosePackSection />
+      <AboutLessonsBlock />
       <BenefitsBlock />
+      <FlexibleSchedule />
       <ReviewsBlock />
       <LocationSection />
       <Footer />

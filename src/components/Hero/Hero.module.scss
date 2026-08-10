@@ -1,8 +1,24 @@
-.heroVideo {
-  width: 100%;
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
 }
 
+.heroLogo {
+  position: absolute;
+  top: 4%;
+  left: 12%;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .swellButton {
+  width: 284px;
+  height: 64px;
   font-family: "satoshi", serif;
   position: absolute;
   bottom: 100px;
@@ -14,8 +30,8 @@
   letter-spacing: 0%;
   border: 1px solid white;
   border-radius: 100px;
-  background-color: #00bab9;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #02a4a4;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -60,7 +76,7 @@
     font-size: 32px;
     line-height: 130%;
     letter-spacing: 0%;
-    color: #09101e;
+    color: #ffffff;
     z-index: 1;
     top: 45%;
     left: 20%;

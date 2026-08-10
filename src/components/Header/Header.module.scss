@@ -24,6 +24,7 @@
       font-size: 17px;
       color: #09101e;
       font-family: "satoshi", serif;
+      // font-weight: 700;
 
       .li {
         list-style: none;
@@ -38,7 +39,7 @@
           transition: background-color 0.2s ease;
 
           &:hover {
-            background-color: #00bab9;
+            background-color: #d6f0f0;
           }
         }
       }

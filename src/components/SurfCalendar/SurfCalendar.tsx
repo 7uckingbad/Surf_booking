@@ -22,6 +22,12 @@ export const SurfCalendar = ({
   onSelect,
   weatherRange,
 }: SurfCalendarProps) => {
+  const isDateDisabled = (date: Date) => {
+    const dateString = format(date, "yyyy-MM-dd");
+    const hasData = weatherRange.some((w) => w.date === dateString);
+    return !hasData;
+  };
+
   const CustomDayButton = (props: DayButtonProps) => {
     const { day, ...buttonProps } = props;
     const dateString = format(day.date, "yyyy-MM-dd");
@@ -35,9 +41,9 @@ export const SurfCalendar = ({
             style={{
               position: "absolute",
               top: "6px",
-              right: "8px",
-              width: "4px",
-              height: "4px",
+              right: "6px",
+              width: "6px",
+              height: "6px",
               borderRadius: "50%",
               backgroundColor: getStatusColor(statusForDay.status),
               zIndex: 10,
@@ -57,24 +63,11 @@ export const SurfCalendar = ({
         weekStartsOn={1}
         showOutsideDays={true}
         disableNavigation={true}
+        disabled={isDateDisabled}
         components={{
           DayButton: CustomDayButton,
         }}
       />
-      {/* <DayPicker
-        mode="single"
-        selected={selected}
-        onSelect={onSelect}
-        weekStartsOn={1}
-        showOutsideDays={true}
-        defaultMonth={new Date(2026, 7)} // август
-        startMonth={new Date(2026, 7)}
-        endMonth={new Date(2026, 7)}
-        disableNavigation={true}
-        components={{
-          DayButton: CustomDayButton,
-        }}
-      /> */}
     </div>
   );
 };
