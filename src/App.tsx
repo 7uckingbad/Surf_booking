@@ -1,14 +1,7 @@
-import { AboutLessonsBlock } from "./components/AboutLessonsBlock/AboutLessonsBlock";
-import { BenefitsBlock } from "./components/BenefitsBlock/BenefitsBlock";
-import { ChoosePackSection } from "./components/ChoosePackSection/ChoosePackSection";
-import { FlexibleSchedule } from "./components/FlexibleSchedule/FlexibleSchedule";
-import { Footer } from "./components/Footer/Footer";
+import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { Hero } from "./components/Hero/Hero";
-import { IntroSection } from "./components/IntroSection/IntroSection";
-import { LocationSection } from "./components/Location/Location.Section";
-import { ReviewsBlock } from "./components/ReviewsBlock/Rewiews";
-import { SurfSessionSection } from "./components/SurfSessionSection/SurfSessionSection";
+import { Homepage } from "./pages/HomePage/Homepage";
 
 function App() {
   return (
@@ -17,15 +10,9 @@ function App() {
         <Hero />
         <Header />
       </div>
-      <IntroSection />
-      <SurfSessionSection />
-      <ChoosePackSection />
-      <AboutLessonsBlock />
-      <BenefitsBlock />
-      <FlexibleSchedule />
-      <ReviewsBlock />
-      <LocationSection />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Homepage />}></Route>
+      </Routes>
     </>
   );
 }
