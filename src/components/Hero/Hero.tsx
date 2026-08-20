@@ -2,15 +2,14 @@ import styles from "./Hero.module.scss";
 import heroImage from "../../assets/heroLogo/herobackGround.svg";
 import buttonImg from "../../assets/heroLogo/heroButton.svg";
 import heroLogo from "../../assets/heroLogo/mainLogo.svg";
+import heroImageMob from "../../assets/heroLogo/mobileHeroIMG.svg";
 
 export const Hero = () => {
   return (
     <section className={styles.hero}>
-      {/* <video autoPlay loop muted playsInline className={styles.heroVideo}>
-        <source src={video} />
-      </video> */}
       <img src={heroLogo} alt="" className={styles.heroLogo} />
       <img src={heroImage} alt="" className={styles.heroImage} />
+      <img src={heroImageMob} alt="" className={styles.heroImageMobile} />
       <div className={styles.heroContent}>
         <h1 className={styles.title}>FREEDOM SURF</h1>
         <p className={styles.pText}>

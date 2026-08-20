@@ -22,3 +22,21 @@
     margin-top: 32px;
   }
 }
+
+@media (max-width: 768px) {
+  .flexibleBlock {
+    margin: 60px 16px;
+
+    .flexibleTitle {
+      font-size: 22px;
+    }
+
+    .flexibleText {
+      font-size: 15px;
+    }
+
+    .flexibleImg {
+      margin-top: 20px;
+    }
+  }
+}

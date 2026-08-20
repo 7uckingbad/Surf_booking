@@ -94,3 +94,47 @@
     width: 280px;
   }
 }
+
+@media (max-width: 768px) {
+  .reviewsSection {
+    margin: 60px 16px;
+
+    .textBlock {
+      max-width: 100%;
+
+      .reviewsTitle {
+        font-size: 28px;
+      }
+
+      .reviewsText {
+        margin-top: 20px;
+        font-size: 15px;
+      }
+
+      .rating {
+        margin-top: 24px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .reviewsScroll {
+    margin-top: 20px;
+
+    .shareCard {
+      width: 200px;
+      height: 260px;
+      gap: 24px;
+
+      .shareButton {
+        width: 180px;
+        height: 40px;
+        font-size: 14px;
+      }
+    }
+
+    .reviewCard {
+      width: 200px;
+    }
+  }
+}

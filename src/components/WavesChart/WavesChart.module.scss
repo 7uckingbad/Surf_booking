@@ -22,3 +22,15 @@
     border-radius: 50%;
   }
 }
+@media (max-width: 768px) {
+  .text {
+    margin-top: 24px;
+    font-size: 20px;
+    gap: 8px;
+
+    .legendDot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}

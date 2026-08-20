@@ -1,6 +1,5 @@
 import styles from "./Location.module.scss";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-//* координаты линия изгиба надо еще добавить
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import marker from "../../assets/LocationService/marker.svg";
 import busImg from "../../assets/LocationService/bus.svg";
 import carImg from "../../assets/LocationService/car.svg";
@@ -25,30 +24,38 @@ const handleOpenMaps = () => {
 };
 
 export const LocationSection = () => {
-  console.log(import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+  });
+
   return (
     <section className={styles.locationSection} id="location">
-      <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={14}
-          options={{
-            disableDefaultUI: true,
-            zoomControl: true,
-            streetViewControl: false,
-            mapTypeControl: false,
-            fullscreenControl: false,
-          }}
-        >
-          <Marker
-            position={center}
-            icon={{
-              url: marker,
+      <div className={styles.mapWrapper}>
+        {isLoaded ? (
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={14}
+            options={{
+              disableDefaultUI: true,
+              zoomControl: true,
+              streetViewControl: false,
+              mapTypeControl: false,
+              fullscreenControl: false,
             }}
-          />
-        </GoogleMap>
-      </LoadScript>
+          >
+            <Marker
+              position={center}
+              icon={{
+                url: marker,
+              }}
+            />
+          </GoogleMap>
+        ) : (
+          <div className={styles.mapLoader}>Loading Map...</div>
+        )}
+      </div>
 
       <div className={styles.infoCard}>
         <h2 className={styles.infoCardTitle}>VISIT OUR CAMP</h2>

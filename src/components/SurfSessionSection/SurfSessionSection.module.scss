@@ -96,3 +96,46 @@
     letter-spacing: 0%;
   }
 }
+
+@media (max-width: 768px) {
+  .mainSection {
+    margin: 40px 16px;
+
+    .h2Title {
+      font-size: 28px;
+    }
+
+    .twoColumns {
+      flex-direction: column;
+      gap: 40px;
+
+      .h3Title {
+        font-size: 22px;
+        margin-top: 24px;
+        white-space: normal;
+
+        .dateText {
+          font-size: 16px;
+        }
+      }
+
+      .text {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .textStatus {
+    font-size: 16px;
+
+    .bestTimeText {
+      font-size: 16px;
+    }
+  }
+
+  .chartButton {
+    width: 100%;
+    font-size: 16px;
+    padding: 16px;
+  }
+}

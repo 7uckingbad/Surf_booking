@@ -1,0 +1,52 @@
+.twoColumns {
+  margin-top: 32px;
+  margin-right: 120px;
+  margin-left: 120px;
+  display: flex;
+  gap: 160px;
+  justify-content: center;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 69px;
+  width: 500px;
+  flex-shrink: 0;
+
+  img {
+    max-width: 176px;
+  }
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 580px;
+
+  .paymentTitle {
+    font-family: "Dela Gothic One", serif;
+    font-size: 56px;
+    line-height: 120%;
+    color: #09101e;
+    font-weight: 400;
+  }
+}
+
+.paymentBlock {
+  margin-right: 120px;
+  margin-left: 120px;
+  margin-top: 162px;
+}
+
+.pText {
+  font-family: "satoshi", serif;
+  font-size: 20px;
+  line-height: 150%;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

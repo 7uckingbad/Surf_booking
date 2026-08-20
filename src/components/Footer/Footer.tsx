@@ -10,56 +10,57 @@ export const Footer = () => {
     <section className={styles.footer}>
       <div className={styles.threeColumns}>
         <div className={styles.content}>
-          {/* <h2 className={styles.footerTitle}>Freedom Surf</h2> */}
-
+          <h2 className={styles.footerTitle}>Freedom Surf</h2>
+          <p className={styles.mainText}>Ride the perfect wave.</p>
           <img
             src={footerImg}
             alt="Footer Image"
             className={styles.footerImage}
           />
-          <p className={styles.mainText}>Ride the perfect wave.</p>
         </div>
 
-        <div className={styles.navigation}>
-          <h2 className={styles.navTitle}>Navigation</h2>
-          <ul className={styles.navList}>
-            <li className={styles.liText}>
-              <NavLink to="/forecast">Forecast</NavLink>
-            </li>
-            <li className={styles.liText}>
-              <NavLink to="/rental">Rental</NavLink>
-            </li>
-            <li className={styles.liText}>
-              <NavLink to="/location">Location</NavLink>
-            </li>
-            <li className={styles.liText}>
-              <NavLink to="/reviews">Reviews</NavLink>
-            </li>
-          </ul>
-        </div>
+        <div className={styles.navConnectRow}>
+          <div className={styles.navigation}>
+            <h2 className={styles.navTitle}>Navigation</h2>
+            <ul className={styles.navList}>
+              <li className={styles.liText}>
+                <NavLink to="/forecast">Forecast</NavLink>
+              </li>
+              <li className={styles.liText}>
+                <NavLink to="/rental">Rental</NavLink>
+              </li>
+              <li className={styles.liText}>
+                <NavLink to="/location">Location</NavLink>
+              </li>
+              <li className={styles.liText}>
+                <NavLink to="/reviews">Reviews</NavLink>
+              </li>
+            </ul>
+          </div>
 
-        <div className={styles.connect}>
-          <h2 className={styles.navTitle}>Connect</h2>
-          <ul className={styles.navList}>
-            <li className={styles.liFlex}>
-              <img src={emailImg} alt="" />
-              <a href="" type="email" className={styles.liText}>
-                hello@swellstatus.com
-              </a>
-            </li>
-            <li className={styles.liFlex}>
-              <img src={instImg} alt="" />
-              <a href="" className={styles.liText}>
-                Instagram
-              </a>
-            </li>
-            <li className={styles.liFlex}>
-              <img src={telegaImg} alt="" />
-              <a href="" className={styles.liText}>
-                Telegram
-              </a>
-            </li>
-          </ul>
+          <div className={styles.connect}>
+            <h2 className={styles.navTitle}>Connect</h2>
+            <ul className={styles.navList}>
+              <li className={styles.liFlex}>
+                <img src={emailImg} alt="" />
+                <a href="" type="email" className={styles.liText}>
+                  hello@swellstatus.com
+                </a>
+              </li>
+              <li className={styles.liFlex}>
+                <img src={instImg} alt="" />
+                <a href="" className={styles.liText}>
+                  Instagram
+                </a>
+              </li>
+              <li className={styles.liFlex}>
+                <img src={telegaImg} alt="" />
+                <a href="" className={styles.liText}>
+                  Telegram
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 

@@ -7,8 +7,15 @@ import vector from "../../assets/IntroSectionImages/Vector.svg";
 
 import textImage2 from "../../assets/ChooseYourPackImg/2.svg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const ChoosePackSection = () => {
+interface SurfSessionSectionProps {
+  selectedDate: Date | undefined;
+}
+
+export const ChoosePackSection = ({
+  selectedDate,
+}: SurfSessionSectionProps) => {
   const [softboardInstructor, setSoftboardInstructor] = useState(false);
   const [hardboardInstructor, setHardboardInstructor] = useState(false);
   const [performanceInstructor, setPerformanceInstructor] = useState(false);
@@ -16,6 +23,40 @@ export const ChoosePackSection = () => {
   const softboardPrice = softboardInstructor ? 40 + 20 : 40;
   const hardboardPrice = hardboardInstructor ? 55 + 20 : 55;
   const performancePrice = performanceInstructor ? 70 + 20 : 70;
+
+  const navigate = useNavigate();
+
+  const handleBookNowSoftBoard = () => {
+    navigate("/rental", {
+      state: {
+        packageTitle: "Softboard Rental",
+        basePrice: 40,
+        withInstructor: softboardInstructor,
+        selectedDate: selectedDate,
+      },
+    });
+  };
+  const handleBookNowHardBoard = () => {
+    navigate("/rental", {
+      state: {
+        packageTitle: "Hardboard Rental",
+        basePrice: 55,
+        withInstructor: hardboardInstructor,
+        selectedDate: selectedDate,
+      },
+    });
+  };
+  const handleBookNowPerfBoard = () => {
+    navigate("/rental", {
+      state: {
+        packageTitle: "Perfomance Pack",
+        basePrice: 70,
+        withInstructor: performanceInstructor,
+        selectedDate: selectedDate,
+      },
+    });
+  };
+
   return (
     <section className={styles.packSection}>
       <h2 className={styles.h2Title}>CHOOSE YOUR PACK</h2>
@@ -50,7 +91,10 @@ export const ChoosePackSection = () => {
             <span className={styles.toggleLabel}>Add instructor (+€20)</span>
           </label>
           <p className={styles.price}>€{softboardPrice} / day</p>
-          <button className={styles.bookButton}>
+          <button
+            className={styles.bookButton}
+            onClick={handleBookNowSoftBoard}
+          >
             Book Now
             <img src={vector} alt="" />
           </button>
@@ -88,7 +132,10 @@ export const ChoosePackSection = () => {
             <span className={styles.toggleLabel}>Add instructor (+€20)</span>
           </label>
           <p className={styles.price}>€{hardboardPrice} / day</p>
-          <button className={styles.bookButton}>
+          <button
+            className={styles.bookButton}
+            onClick={handleBookNowHardBoard}
+          >
             Book Now
             <img src={vector} alt="" />
           </button>
@@ -125,7 +172,10 @@ export const ChoosePackSection = () => {
             <span className={styles.toggleLabel}>Add instructor (+€20)</span>
           </label>
           <p className={styles.price}>€{performancePrice} / day</p>
-          <button className={styles.bookButton}>
+          <button
+            className={styles.bookButton}
+            onClick={handleBookNowPerfBoard}
+          >
             Book Now
             <img src={vector} alt="" />
           </button>

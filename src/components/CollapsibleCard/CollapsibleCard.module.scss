@@ -1,0 +1,35 @@
+.card {
+  background-color: #f5f9fb;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.title {
+  font-family: "satoshi", serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: black;
+  margin: 0;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+  transform: rotate(180deg);
+}
+
+.chevronOpen {
+  transform: rotate(0deg);
+}
+
+.content {
+  margin-top: 16px;
+}

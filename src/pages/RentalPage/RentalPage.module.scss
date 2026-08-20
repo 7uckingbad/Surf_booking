@@ -1,0 +1,89 @@
+.rentalBlock {
+  margin-right: 120px;
+  margin-left: 120px;
+}
+
+.heroLogo {
+  margin-left: 66px;
+}
+
+.bookingColumns {
+  margin-left: 120px;
+  margin-right: 120px;
+  margin-top: 32px;
+  gap: 103px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  .leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.participantTitle {
+  margin-top: 100px;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: "satoshi", serif;
+  line-height: 120%;
+  margin-left: 120px;
+}
+.checklist,
+.notesList {
+  font-family: "satoshi", serif;
+  font-size: 16px;
+  line-height: 140%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.checkItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .heroLogo {
+    display: none;
+  }
+
+  .rentalBLock {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 140px;
+  }
+
+  .heroLogo {
+    margin-left: 16px;
+    width: 100px;
+  }
+
+  .bookingColumns {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 24px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .participantTitle {
+    margin-top: 40px;
+    margin-left: 16px;
+    font-size: 18px;
+  }
+}

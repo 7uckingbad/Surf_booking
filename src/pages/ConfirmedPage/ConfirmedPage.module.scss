@@ -1,0 +1,93 @@
+.confirmedBlock {
+  margin-right: 120px;
+  margin-left: 120px;
+  margin-top: 134px;
+
+  .twoColumns {
+    margin-top: 32px;
+    display: flex;
+    gap: 160px;
+    .leftColumnImg {
+      width: 320px;
+      height: 500px;
+    }
+    .rightColumn {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 32px;
+
+      .rightT {
+        font-family: "Dela Gothic One", serif;
+        line-height: 120%;
+        font-size: 56px;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      .rigthP {
+        font-family: "satoshi", serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 150%;
+      }
+      .confirmationBlock {
+        border: 1px solid #f3f5f9;
+        border-radius: 16px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        .detailRow {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid #f3f5f9;
+          padding-bottom: 12px;
+
+          .detailLabel {
+            font-family: "satoshi", serif;
+            font-size: 20px;
+            line-height: 150%;
+            color: #343a40;
+          }
+          .detailValue {
+            color: #09101e;
+            font-family: "satoshi", serif;
+            font-weight: 700;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .leftColumn {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.buttonComfirm {
+  background-color: #02a4a4;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  margin-top: 12px;
+  border-radius: 1000px;
+  padding: 20px;
+  border: none;
+  color: #ffffff;
+  font-family: "satoshi", serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #00a885;
+  }
+}

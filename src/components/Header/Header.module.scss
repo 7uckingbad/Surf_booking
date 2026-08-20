@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   z-index: 10;
+
   .navigation {
     border-radius: 100px;
     background-color: #ffffff;
@@ -16,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.1);
     .ul {
       display: flex;
       flex-direction: row;
@@ -24,7 +26,6 @@
       font-size: 17px;
       color: #09101e;
       font-family: "satoshi", serif;
-      // font-weight: 700;
 
       .li {
         list-style: none;
@@ -47,5 +48,140 @@
   }
 }
 .activeLink {
-  background-color: #00bab9;
+  background-color: #ccefef;
+}
+
+.menuTrigger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+
+  .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #09101e;
+  }
+}
+
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header {
+    top: 50px;
+    justify-content: flex-end;
+    padding-right: 16px;
+
+    .navigation {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+      width: auto;
+
+      .ul {
+        display: none;
+      }
+    }
+  }
+
+  .menuTrigger {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 20px;
+    left: 16px;
+    right: 16px;
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 4px 64px 0 rgba(0, 0, 0, 0.15);
+    z-index: 100;
+
+    .closeButton {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #09101e;
+    }
+
+    .mobileMenuList {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .mobileMenuItem {
+      list-style: none;
+    }
+
+    .mobileMenuLink {
+      display: block;
+      padding: 16px 20px;
+      border-radius: 100px;
+      font-family: "satoshi", serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #09101e;
+      transition: background-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      &:hover {
+        background-color: #d6f0f0;
+      }
+    }
+
+    .mobileActiveLink {
+      background-color: #00bab9;
+      color: #ffffff;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .bookingHeader {
+    justify-content: center;
+    padding-right: 0;
+
+    .navigation {
+      background-color: #ffffff;
+      box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.1);
+      padding: 4px;
+
+      .ul {
+        display: flex;
+        gap: 4px;
+
+        .li a {
+          padding: 12px 16px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .bookingHeader .menuTrigger {
+    display: none;
+  }
 }

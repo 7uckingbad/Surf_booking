@@ -273,3 +273,97 @@
     color: #09101e;
   }
 }
+
+@media (max-width: 768px) {
+  .packSection {
+    margin: 60px 16px;
+    gap: 24px;
+
+    .h2Title {
+      font-size: 28px;
+    }
+
+    .firstPack,
+    .secondPack,
+    .thirdPack {
+      margin-top: 0;
+
+      .firstPackImg {
+        height: 480px;
+      }
+    }
+    .infoCard {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      right: auto;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      padding: 24px;
+      border-radius: 16px;
+
+      .infoCardTitle {
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .descriptionBlock {
+        margin-top: 16px;
+
+        .infoCardText {
+          font-size: 14px;
+        }
+      }
+
+      .toggleWrapper {
+        margin-top: 16px;
+      }
+
+      .toggleLabel {
+        font-size: 14px;
+      }
+    }
+  }
+  .infoCardRightSide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    padding: 24px;
+    border-radius: 16px;
+
+    .infoCardTitle {
+      font-size: 22px;
+    }
+
+    .descriptionBlock {
+      margin-top: 16px;
+
+      .infoCardText {
+        font-size: 14px;
+      }
+    }
+
+    .toggleWrapper {
+      margin-top: 16px;
+    }
+
+    .toggleLabel {
+      font-size: 14px;
+    }
+  }
+
+  .price {
+    margin-top: 16px;
+    font-size: 22px;
+  }
+
+  .bookButton {
+    margin-top: 16px;
+    width: 100%;
+    font-size: 16px;
+    padding: 16px;
+  }
+}

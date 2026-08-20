@@ -6,6 +6,7 @@ import { WavesChart } from "../WavesChart/WavesChart";
 import { addDays, format, parseISO } from "date-fns";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
 import type { WeatherStatus } from "../../api/utils/getStatusColor";
+import { useNavigate } from "react-router-dom";
 
 interface WeatherData {
   date: string;
@@ -16,15 +17,29 @@ interface WeatherData {
   description: string;
   chartData: number[];
 }
+interface SurfSessionSectionProps {
+  selectedDate: Date | undefined;
+  setSelectedDate: (date: Date | undefined) => void;
+}
 
-export const SurfSessionSection = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
-    new Date(),
-  );
-
+export const SurfSessionSection = ({
+  selectedDate,
+  setSelectedDate,
+}: SurfSessionSectionProps) => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
   const [weatherRange, setWeatherRange] = useState<WeatherStatus[]>([]);
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    navigate("/rental", {
+      state: {
+        selectedDate: selectedDate,
+        bestTime: weather?.bestTime,
+        status: weather?.status,
+      },
+    });
+  };
 
   useEffect(() => {
     const loadRange = async () => {
@@ -113,7 +128,7 @@ export const SurfSessionSection = () => {
             )}
           </div>
 
-          <button className={styles.chartButton}>
+          <button className={styles.chartButton} onClick={handleBookNow}>
             Book a Board for This Day
             <img src={vector} alt="" />
           </button>

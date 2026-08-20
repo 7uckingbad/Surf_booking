@@ -1,0 +1,165 @@
+.twoColumns {
+  margin-top: 32px;
+  margin-right: 120px;
+  margin-left: 120px;
+  display: flex;
+  gap: 160px;
+  justify-content: center;
+
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-family: "Dela Gothic One", serif;
+      font-size: 56px;
+      line-height: 120%;
+      color: #09101e;
+      font-weight: 400;
+    }
+    .subtitle {
+      margin-top: 24px;
+      font-family: "satoshi", serif;
+      font-size: 20px;
+      line-height: 150%;
+    }
+    .tagsRow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .tag {
+        font-size: 12px;
+        font-family: "satoshi", serif;
+        line-height: 150%;
+        align-items: center;
+        display: flex;
+      }
+    }
+    .description {
+      font-size: 16px;
+      font-family: "satoshi", serif;
+      margin-top: 24px;
+      color: #343a40;
+    }
+  }
+}
+.contactSection {
+  margin-top: 32px;
+
+  .contactTitle {
+    font-size: 20px;
+    font-family: "satoshi", serif;
+    line-height: 120%;
+    font-weight: 700;
+  }
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 16px;
+
+    .formLabel {
+      font-size: 14px;
+      font-family: "satoshi", serif;
+      line-height: 140%;
+    }
+
+    .formInput {
+      padding: 12px 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-family: "satoshi", serif;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+        border-color: #00bab9;
+      }
+    }
+
+    .phoneRow {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+
+      .countrySelect {
+        border: none;
+        padding: 12px;
+        background-color: transparent;
+        border-right: 1px solid #e5e7eb;
+        font-family: "satoshi", serif;
+        font-size: 16px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .formInput {
+        border: none;
+        flex: 1;
+        padding: 12px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .twoColumns {
+    margin-top: 24px;
+    margin-right: 16px;
+    margin-left: 16px;
+    flex-direction: column;
+    gap: 24px;
+
+    img {
+      order: 1;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .rightColumn {
+      order: 1;
+
+      .title {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        margin-top: 16px;
+        font-size: 15px;
+      }
+
+      .tagsRow {
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .tag {
+          font-size: 11px;
+        }
+      }
+
+      .description {
+        margin-top: 16px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .contactSection {
+    margin-top: 24px;
+
+    .contactTitle {
+      font-size: 18px;
+    }
+  }
+}

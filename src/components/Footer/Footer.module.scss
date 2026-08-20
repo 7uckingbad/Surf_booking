@@ -31,11 +31,14 @@
     line-height: 150%;
   }
   .footerImage {
-    // margin-top: 25px;
-    // align-items: flex-start;
     width: 230px;
     height: auto;
   }
+
+  .navConnectRow {
+    display: contents;
+  }
+
   .navigation {
     display: flex;
     flex-direction: column;
@@ -103,4 +106,50 @@
   justify-content: center;
   color: #78838c;
   padding-bottom: 52px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    .threeColumns {
+      padding: 32px 16px 40px;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footerTitle {
+      font-size: 32px;
+    }
+
+    .footerImage {
+      width: 140px;
+      margin-top: 12px;
+    }
+
+    .mainText {
+      font-size: 16px;
+    }
+
+    .navConnectRow {
+      display: flex;
+      gap: 32px;
+    }
+
+    .navigation,
+    .connect {
+      .navTitle {
+        font-size: 22px;
+      }
+
+      .liText {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .bottomFooter {
+    font-size: 12px;
+    text-align: center;
+    padding: 0 16px 32px;
+    line-height: 160%;
+  }
 }

@@ -21,6 +21,7 @@
     "react-leaflet": "^5.0.0",
     "react-redux": "^9.3.0",
     "react-router-dom": "^7.18.2",
+    "react-router-hash-link": "^2.4.3",
     "react-scroll": "^1.9.3",
     "recharts": "^3.10.0",
     "sass": "^1.101.0"

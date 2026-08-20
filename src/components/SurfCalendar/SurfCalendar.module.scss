@@ -56,3 +56,36 @@
 :global(.rdp-nav) {
   gap: 50px;
 }
+
+@media (max-width: 768px) {
+  :global(.rdp-root) {
+    width: 100%;
+    height: auto;
+    padding: 12px;
+  }
+
+  :global(.rdp-month_grid) {
+    height: auto;
+  }
+
+  :global(.rdp-day_button) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    font-size: 13px;
+  }
+
+  :global(.rdp-caption_label) {
+    font-size: 18px;
+  }
+
+  :global(.rdp-weekday) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+  }
+
+  :global(.rdp-nav) {
+    gap: 12px;
+  }
+}

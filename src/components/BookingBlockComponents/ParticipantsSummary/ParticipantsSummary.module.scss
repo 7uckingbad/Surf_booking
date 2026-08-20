@@ -1,0 +1,102 @@
+.participantsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.participantRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.numberCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #a6e8e6;
+  color: #09101e;
+  font-family: "satoshi", serif;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.level {
+  font-family: "satoshi", serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #09101e;
+}
+
+.boardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+}
+
+.boardLabel {
+  font-family: "satoshi", serif;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.boardCount {
+  font-family: "satoshi", serif;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.price {
+  font-family: "satoshi", serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #09101e;
+  white-space: nowrap;
+}
+
+.instructorsBlock {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.instructorsTitle {
+  font-family: "satoshi", serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #09101e;
+  margin: 0 0 12px 0;
+}
+
+.instructorsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.instructorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "satoshi", serif;
+  font-size: 14px;
+  color: #09101e;
+}
