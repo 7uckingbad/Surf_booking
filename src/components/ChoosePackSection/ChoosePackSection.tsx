@@ -6,8 +6,11 @@ import textImage1 from "../../assets/ChooseYourPackImg/1.svg";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
 
 import textImage2 from "../../assets/ChooseYourPackImg/2.svg";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import sofboardPaymentImg from "../../assets/ChooseYourPackImg/SoftBoardImg.svg";
+import hardboardPaymentImg from "../../assets/ChooseYourPackImg/hardBoardImg.svg";
+import perfomancePaymentImg from "../../assets/ChooseYourPackImg/PerfomanceImg.svg";
+import { useState } from "react";
 
 interface SurfSessionSectionProps {
   selectedDate: Date | undefined;
@@ -19,7 +22,6 @@ export const ChoosePackSection = ({
   const [softboardInstructor, setSoftboardInstructor] = useState(false);
   const [hardboardInstructor, setHardboardInstructor] = useState(false);
   const [performanceInstructor, setPerformanceInstructor] = useState(false);
-
   const softboardPrice = softboardInstructor ? 40 + 20 : 40;
   const hardboardPrice = hardboardInstructor ? 55 + 20 : 55;
   const performancePrice = performanceInstructor ? 70 + 20 : 70;
@@ -33,6 +35,7 @@ export const ChoosePackSection = ({
         basePrice: 40,
         withInstructor: softboardInstructor,
         selectedDate: selectedDate,
+        packageImage: sofboardPaymentImg,
       },
     });
   };
@@ -43,6 +46,7 @@ export const ChoosePackSection = ({
         basePrice: 55,
         withInstructor: hardboardInstructor,
         selectedDate: selectedDate,
+        packageImage: hardboardPaymentImg,
       },
     });
   };
@@ -53,6 +57,7 @@ export const ChoosePackSection = ({
         basePrice: 70,
         withInstructor: performanceInstructor,
         selectedDate: selectedDate,
+        packageImage: perfomancePaymentImg,
       },
     });
   };
@@ -90,14 +95,16 @@ export const ChoosePackSection = ({
             <span className={styles.toggleSlider}></span>
             <span className={styles.toggleLabel}>Add instructor (+€20)</span>
           </label>
-          <p className={styles.price}>€{softboardPrice} / day</p>
-          <button
-            className={styles.bookButton}
-            onClick={handleBookNowSoftBoard}
-          >
-            Book Now
-            <img src={vector} alt="" />
-          </button>
+          <div className={styles.priceRow}>
+            <p className={styles.price}>€{softboardPrice} / day</p>
+            <button
+              className={styles.bookButton}
+              onClick={handleBookNowSoftBoard}
+            >
+              Book Now
+              <img src={vector} alt="" />
+            </button>
+          </div>
         </div>
       </div>
       {/* Второй пак */}
@@ -131,14 +138,16 @@ export const ChoosePackSection = ({
             <span className={styles.toggleSlider}></span>
             <span className={styles.toggleLabel}>Add instructor (+€20)</span>
           </label>
-          <p className={styles.price}>€{hardboardPrice} / day</p>
-          <button
-            className={styles.bookButton}
-            onClick={handleBookNowHardBoard}
-          >
-            Book Now
-            <img src={vector} alt="" />
-          </button>
+          <div className={styles.priceRow}>
+            <p className={styles.price}>€{hardboardPrice} / day</p>
+            <button
+              className={styles.bookButton}
+              onClick={handleBookNowHardBoard}
+            >
+              Book Now
+              <img src={vector} alt="" />
+            </button>
+          </div>
         </div>
       </div>
       {/* Третий пак */}
@@ -171,14 +180,16 @@ export const ChoosePackSection = ({
             <span className={styles.toggleSlider}></span>
             <span className={styles.toggleLabel}>Add instructor (+€20)</span>
           </label>
-          <p className={styles.price}>€{performancePrice} / day</p>
-          <button
-            className={styles.bookButton}
-            onClick={handleBookNowPerfBoard}
-          >
-            Book Now
-            <img src={vector} alt="" />
-          </button>
+          <div className={styles.priceRow}>
+            <p className={styles.price}>€{performancePrice} / day</p>
+            <button
+              className={styles.bookButton}
+              onClick={handleBookNowPerfBoard}
+            >
+              Book Now
+              <img src={vector} alt="" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

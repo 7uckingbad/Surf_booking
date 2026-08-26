@@ -192,3 +192,39 @@
   color: #09101e;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .participantCard {
+    padding: 20px;
+    gap: 8px;
+
+    .number {
+      font-size: 20px;
+    }
+  }
+
+  .inputWithIcon {
+    .inputText,
+    .inputSelect {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+
+  .toggleLabel {
+    font-size: 15px;
+  }
+
+  .hoursTitle {
+    font-size: 15px;
+  }
+
+  .hoursPill {
+    padding: 4px 12px;
+    gap: 10px;
+  }
+
+  .cardTotal {
+    font-size: 16px;
+  }
+}

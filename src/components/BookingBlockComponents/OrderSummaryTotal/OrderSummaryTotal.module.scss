@@ -59,3 +59,27 @@
     background-color: #009e9d;
   }
 }
+
+@media (max-width: 768px) {
+  .summaryCard {
+    padding: 20px;
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .row {
+    font-size: 14px;
+  }
+
+  .totalRow {
+    font-size: 20px;
+  }
+
+  .continueButton {
+    padding: 12px;
+    font-size: 15px;
+  }
+}

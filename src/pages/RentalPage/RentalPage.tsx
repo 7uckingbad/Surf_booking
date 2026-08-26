@@ -31,6 +31,7 @@ export const RentalPage = () => {
   const bookingData = location.state;
   const [participantsCount, setParticipantsCount] = useState(0);
   const [selectedTime, setSelectedTime] = useState("08:00");
+  const [fullName, setFullName] = useState("");
 
   const [participantsData, setParticipantsData] = useState<ParticipantData[]>(
     () =>
@@ -55,7 +56,6 @@ export const RentalPage = () => {
     });
   }
   const hasSelectedBoard = participantsData.some((p) => p.boardId);
-
   return (
     <div className={styles.rentalBLock}>
       <img src={heroLogo} alt="" className={styles.heroLogo} />
@@ -65,6 +65,8 @@ export const RentalPage = () => {
         setParticipantsCount={setParticipantsCount}
         selectedTime={selectedTime}
         setSelectedTime={setSelectedTime}
+        fullName={fullName}
+        setFullName={setFullName}
       />
 
       <h3 className={styles.participantTitle}>Participants & Equipment</h3>
@@ -88,7 +90,12 @@ export const RentalPage = () => {
               participants={participantsData}
               onContinue={() => {
                 navigate("/payment", {
-                  state: { ...bookingData, participantsData, selectedTime },
+                  state: {
+                    ...bookingData,
+                    participantsData,
+                    selectedTime,
+                    fullName,
+                  },
                 });
               }}
             />

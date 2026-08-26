@@ -2,8 +2,12 @@ import { useState } from "react";
 import styles from "./PaymentForm.module.scss";
 import lockIMG from "../../../assets/RentalPageImgs/lockIMG.svg";
 
-export const PaymentForm = () => {
-  const [fullName, setFullName] = useState("");
+interface PaymentFormProps {
+  initialFullName?: string;
+}
+
+export const PaymentForm = ({ initialFullName = "" }: PaymentFormProps) => {
+  const [fullName, setFullName] = useState(initialFullName);
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");

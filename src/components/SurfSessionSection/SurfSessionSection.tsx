@@ -34,6 +34,7 @@ export const SurfSessionSection = ({
   const handleBookNow = () => {
     navigate("/rental", {
       state: {
+        packageTitle: "Softboard Rental",
         selectedDate: selectedDate,
         bestTime: weather?.bestTime,
         status: weather?.status,

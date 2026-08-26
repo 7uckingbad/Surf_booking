@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Stepper } from "../../assets/Stepper/Stepper";
 import styles from "./PaymentPage.module.scss";
 import { BookingInfoPanel } from "../../components/BookingBlockComponents/BookingInfoPanel/BookingInfoPanel";
-import boardIMG from "../../assets/RentalPageImgs/paymentBoardIMG.svg";
+// import boardIMG from "../../assets/RentalPageImgs/paymentBoardIMG.svg";
 import { PaymentForm } from "../../components/BookingBlockComponents/PaymentForm/PaymentForm";
 import lockIMG from "../../assets/RentalPageImgs/lockIMG.svg";
 import { PaymentOrderSummary } from "../../components/BookingBlockComponents/PaymentOrderSummary/PaymentOrderSummary";
@@ -11,14 +11,13 @@ export const PaymentPage = () => {
   const location = useLocation();
   const bookingData = location.state;
   const navigate = useNavigate();
-
   return (
     <div className={styles.paymentBlock}>
       <Stepper />
 
       <div className={styles.twoColumns}>
         <div className={styles.leftColumn}>
-          <img src={boardIMG} alt="" />
+          <img src={bookingData?.packageImage} alt="" />
           <PaymentOrderSummary
             participants={bookingData?.participantsData ?? []}
             onBack={() => navigate("/rental")}
@@ -39,7 +38,7 @@ export const PaymentPage = () => {
             participantsCount={bookingData?.participantsData?.length ?? 0}
             readonly={true}
           />
-          <PaymentForm />
+          <PaymentForm initialFullName={bookingData?.fullName} />
         </div>
       </div>
     </div>

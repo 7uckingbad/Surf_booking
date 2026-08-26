@@ -3,24 +3,6 @@ import usersIMG from "../../../assets/ParticipantsIMG/userIMG.svg";
 import clockIMG from "../../../assets/ParticipantsIMG/clockImg.svg";
 import { BOARD_OPTIONS, INSTRUCTOR_PRICE } from "../../../data/board";
 
-// interface BoardOption {
-//   id: string;
-//   label: string;
-//   price: number;
-// }
-
-// const BOARD_OPTIONS: BoardOption[] = [
-//   { id: "beginner-soft", label: "Beginner Softboard Rental", price: 40 },
-//   {
-//     id: "intermediate-hard",
-//     label: "Intermediate Hardboard Rental",
-//     price: 55,
-//   },
-//   { id: "pro-performance", label: "Pro Performance Pack", price: 70 },
-// ];
-
-// const INSTRUCTOR_PRICE = 20;
-
 export interface ParticipantData {
   name: string;
   boardId: string;

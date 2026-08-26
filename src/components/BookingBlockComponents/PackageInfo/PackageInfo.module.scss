@@ -44,6 +44,16 @@
     }
   }
 }
+
+.packageImgDesktop {
+  width: 100%;
+  max-width: 500px;
+}
+
+.packageImgMobile {
+  display: none;
+}
+
 .contactSection {
   margin-top: 32px;
 
@@ -113,6 +123,17 @@
 }
 
 @media (max-width: 768px) {
+  .packageImgDesktop {
+    display: none;
+  }
+
+  .packageImgMobile {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
   .twoColumns {
     margin-top: 24px;
     margin-right: 16px;
@@ -120,16 +141,7 @@
     flex-direction: column;
     gap: 24px;
 
-    img {
-      order: 1;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-    }
-
     .rightColumn {
-      order: 1;
-
       .title {
         font-size: 28px;
       }
@@ -152,14 +164,6 @@
         margin-top: 16px;
         font-size: 14px;
       }
-    }
-  }
-
-  .contactSection {
-    margin-top: 24px;
-
-    .contactTitle {
-      font-size: 18px;
     }
   }
 }

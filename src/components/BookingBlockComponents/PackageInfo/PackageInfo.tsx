@@ -13,6 +13,8 @@ interface PackageInfoProps {
   setParticipantsCount: (count: number) => void;
   selectedTime: string;
   setSelectedTime: (time: string) => void;
+  fullName: string;
+  setFullName: (name: string) => void;
 }
 
 export const PackageInfo = ({
@@ -20,6 +22,8 @@ export const PackageInfo = ({
   setParticipantsCount,
   selectedTime,
   setSelectedTime,
+  fullName,
+  setFullName,
 }: PackageInfoProps) => {
   const location = useLocation();
   const bookingData = location.state;
@@ -51,14 +55,18 @@ export const PackageInfo = ({
     tags: [],
     descriptions: "",
   };
-  const [fullName, setFullName] = useState("");
+  // const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+380");
 
   return (
     <div className={styles.twoColumns}>
-      <img src={surfImg} alt="" />
+      <img
+        src={bookingData?.packageImage || surfImg}
+        alt=""
+        className={styles.packageImgDesktop}
+      />
       <div className={styles.rightColumn}>
         <h1 className={styles.title}>{bookingData?.packageTitle}</h1>
         <p className={styles.subtitle}>What's included in the package</p>
@@ -72,6 +80,11 @@ export const PackageInfo = ({
         <p className={styles.description}>
           {currentPackageDetails.descriptions}
         </p>
+        <img
+          src={bookingData?.packageImage || surfImg}
+          alt=""
+          className={styles.packageImgMobile}
+        />
 
         <BookingInfoPanel
           selectedDate={bookingData?.selectedDate}
