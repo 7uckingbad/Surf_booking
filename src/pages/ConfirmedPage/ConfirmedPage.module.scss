@@ -8,21 +8,22 @@
     display: flex;
     gap: 160px;
     .leftColumnImg {
-      width: 320px;
-      height: 500px;
+      width: 100%;
+      height: auto;
+      max-width: 500px;
     }
     .rightColumn {
       display: flex;
       flex: 1;
       flex-direction: column;
       gap: 32px;
+      max-width: 580px;
 
       .rightT {
         font-family: "Dela Gothic One", serif;
         line-height: 120%;
         font-size: 56px;
         font-weight: 400;
-        white-space: nowrap;
       }
       .rigthP {
         font-family: "satoshi", serif;
@@ -89,5 +90,58 @@
 
   &:hover {
     background-color: #00a885;
+  }
+}
+
+@media (max-width: 768px) {
+  .confirmedBlock {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 140px;
+
+    .twoColumns {
+      margin-top: 24px;
+      flex-direction: column;
+      gap: 24px;
+
+      .leftColumn {
+        .leftColumnImg {
+          max-width: 100%;
+        }
+      }
+
+      .rightColumn {
+        max-width: 100%;
+        gap: 20px;
+
+        .rightT {
+          font-size: 28px;
+        }
+
+        .rigthP {
+          font-size: 15px;
+        }
+
+        .confirmationBlock {
+          padding: 20px;
+          gap: 8px;
+
+          .detailRow {
+            padding-bottom: 8px;
+
+            .detailLabel,
+            .detailValue {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .buttonComfirm {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
   }
 }

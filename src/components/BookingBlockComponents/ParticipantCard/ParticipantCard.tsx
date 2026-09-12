@@ -38,6 +38,7 @@ export const ParticipantCard = ({
             value={data.name}
             onChange={(e) => onChange({ ...data, name: e.target.value })}
             className={styles.inputText}
+            maxLength={255}
           />
           <img src={usersIMG} alt="" className={styles.inputIcon} />
         </div>

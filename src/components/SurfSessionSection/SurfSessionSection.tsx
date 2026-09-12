@@ -7,6 +7,7 @@ import { addDays, format, parseISO } from "date-fns";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
 import type { WeatherStatus } from "../../api/utils/getStatusColor";
 import { useNavigate } from "react-router-dom";
+import sofboardPaymentImg from "../../assets/ChooseYourPackImg/SoftBoardImg.svg";
 
 interface WeatherData {
   date: string;
@@ -35,6 +36,7 @@ export const SurfSessionSection = ({
     navigate("/rental", {
       state: {
         packageTitle: "Softboard Rental",
+        packageImage: sofboardPaymentImg,
         selectedDate: selectedDate,
         bestTime: weather?.bestTime,
         status: weather?.status,

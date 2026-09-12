@@ -15,6 +15,10 @@ interface PackageInfoProps {
   setSelectedTime: (time: string) => void;
   fullName: string;
   setFullName: (name: string) => void;
+  email: string;
+  setEmail: (email: string) => void;
+  phoneNumber: string;
+  setPhoneNumber: (phone: string) => void;
 }
 
 export const PackageInfo = ({
@@ -24,6 +28,10 @@ export const PackageInfo = ({
   setSelectedTime,
   fullName,
   setFullName,
+  email,
+  setEmail,
+  phoneNumber,
+  setPhoneNumber,
 }: PackageInfoProps) => {
   const location = useLocation();
   const bookingData = location.state;
@@ -56,8 +64,8 @@ export const PackageInfo = ({
     descriptions: "",
   };
   // const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+380");
 
   return (
@@ -105,6 +113,7 @@ export const PackageInfo = ({
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               className={styles.formInput}
+              maxLength={255}
             />
           </div>
 
@@ -116,6 +125,7 @@ export const PackageInfo = ({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={styles.formInput}
+              maxLength={255}
             />
           </div>
 
@@ -136,9 +146,10 @@ export const PackageInfo = ({
               <input
                 type="tel"
                 placeholder="(50) 000-00-00"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 className={styles.formInput}
+                maxLength={255}
               />
             </div>
           </div>

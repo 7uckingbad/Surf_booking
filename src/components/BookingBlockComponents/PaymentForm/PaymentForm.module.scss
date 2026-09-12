@@ -78,3 +78,21 @@
     text-decoration: underline;
   }
 }
+
+@media (max-width: 768px) {
+  .paymentForm {
+    margin-top: 24px;
+    gap: 12px;
+  }
+
+  .rowGroup {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .formInput,
+  .formSelect {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}

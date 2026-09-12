@@ -79,3 +79,26 @@
   font-weight: 700;
   color: black;
 }
+
+@media (max-width: 768px) {
+  .summaryCard {
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .row {
+    font-size: 15px;
+  }
+
+  .totalRow {
+    font-size: 20px;
+  }
+
+  .buttonsRow {
+    flex-direction: column;
+  }
+}

@@ -44,3 +44,65 @@ export const getWeatherRange = async (from: string, to: string) => {
     console.log(error);
   }
 };
+
+export const createBooking = async (bookingPayload: {
+  fullName: string;
+  rentalDate: string;
+  issuanceTime: string;
+  email: string;
+  phoneNumber: string;
+  participants: {
+    name?: string;
+    packId: number;
+    instructorHours: number;
+  }[];
+}) => {
+  try {
+    const response = await fetch(`${BASE_URL}/bookings`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingPayload),
+    });
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const generateUUID = () => {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+};
+
+export const createPayment = async (paymentPayload: {
+  bookingId: number;
+  cardNumber: string;
+  fullName: string;
+  expiryDate: string;
+  billingCountry: string;
+}) => {
+  try {
+    const response = await fetch(`${BASE_URL}/payment`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Idempotency-Key": generateUUID(),
+      },
+      body: JSON.stringify(paymentPayload),
+    });
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

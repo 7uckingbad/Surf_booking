@@ -31,58 +31,57 @@ export const LocationSection = () => {
 
   return (
     <section className={styles.locationSection} id="location">
-      <div className={styles.mapWrapper}>
-        {isLoaded ? (
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={14}
-            options={{
-              disableDefaultUI: true,
-              zoomControl: true,
-              streetViewControl: false,
-              mapTypeControl: false,
-              fullscreenControl: false,
-            }}
-          >
-            <Marker
-              position={center}
-              icon={{
-                url: marker,
-              }}
-            />
-          </GoogleMap>
-        ) : (
-          <div className={styles.mapLoader}>Loading Map...</div>
-        )}
-      </div>
+  <h2 className={styles.infoCardTitle}>VISIT OUR CAMP</h2>
 
-      <div className={styles.infoCard}>
-        <h2 className={styles.infoCardTitle}>VISIT OUR CAMP</h2>
-        <h3 className={styles.infoCardLocationText}>OUR LOCATION</h3>
-        <p className={styles.infoCardText}>
-          We are located in the heart of Peniche, just steps from the best surf
-          spots. Whether you're driving or taking the bus, we are easy to reach.
-        </p>
-        <div className={styles.detailsList}>
-          <div className={styles.detailItem}>
-            <img src={busImg} alt="" className={styles.detailimage} />
-            <strong>Bus:</strong> 1 hour from Lisbon (Route 788)
-          </div>
-          <div className={styles.detailItem}>
-            <img src={carImg} alt="" className={styles.detailimage} />
-            <strong>Parking:</strong> Free on-site parking available
-          </div>
-          <div className={styles.detailItem}>
-            <img src={locationImg} alt="" className={styles.detailimage} />
-            <strong>Address:</strong> Av. do Mar 24, Peniche, Portugal
-          </div>
+  <div className={styles.mapContainer}>
+    <div className={styles.mapWrapper}>
+      {isLoaded ? (
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={14}
+          options={{
+            disableDefaultUI: true,
+            zoomControl: true,
+            streetViewControl: false,
+            mapTypeControl: false,
+            fullscreenControl: false,
+          }}
+        >
+          <Marker position={center} icon={{ url: marker }} />
+        </GoogleMap>
+      ) : (
+        <div className={styles.mapLoader}>Loading Map...</div>
+      )}
+    </div>
+
+    <div className={styles.infoCard}>
+      <h3 className={styles.infoCardLocationText}>OUR LOCATION</h3>
+      <p className={styles.infoCardText}>
+        We are located in the heart of Peniche, just steps from the best surf
+        spots. Whether you're driving or taking the bus, we are easy to
+        reach.
+      </p>
+      <div className={styles.detailsList}>
+        <div className={styles.detailItem}>
+          <img src={busImg} alt="" className={styles.detailimage} />
+          <strong>Bus:</strong> 1 hour from Lisbon (Route 788)
         </div>
-
-        <button className={styles.detailsBlockButton} onClick={handleOpenMaps}>
-          Open in Google Maps <img src={vector} alt="" />
-        </button>
+        <div className={styles.detailItem}>
+          <img src={carImg} alt="" className={styles.detailimage} />
+          <strong>Parking:</strong> Free on-site parking available
+        </div>
+        <div className={styles.detailItem}>
+          <img src={locationImg} alt="" className={styles.detailimage} />
+          <strong>Address:</strong> Av. do Mar 24, Peniche, Portugal
+        </div>
       </div>
-    </section>
+
+      <button className={styles.detailsBlockButton} onClick={handleOpenMaps}>
+        Open in Google Maps <img src={vector} alt="" />
+      </button>
+    </div>
+  </div>
+</section>
   );
 };

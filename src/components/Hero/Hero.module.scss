@@ -52,7 +52,7 @@
 }
 .heroContent {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -67,8 +67,6 @@
     color: white;
     line-height: 150%;
     letter-spacing: 0%;
-    -webkit-text-stroke: 2px #000;
-    paint-order: stroke fill;
   }
   .pText {
     font-weight: 900;
@@ -111,7 +109,6 @@
     .title {
       font-size: 26px;
       line-height: 130%;
-      -webkit-text-stroke: 1px #000;
       white-space: nowrap;
     }
 

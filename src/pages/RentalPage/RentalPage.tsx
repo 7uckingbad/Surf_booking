@@ -10,6 +10,9 @@ import importantImg from "../../assets/ParticipantsIMG/importantImg.svg";
 import { ParticipantsSummary } from "../../components/BookingBlockComponents/ParticipantsSummary/ParticipantsSummary";
 import { OrderSummaryTotal } from "../../components/BookingBlockComponents/OrderSummaryTotal/OrderSummaryTotal";
 import { useLocation, useNavigate } from "react-router-dom";
+import { createBooking } from "../../api/api";
+import { transformParticipants } from "../../api/utils/transformParticipants";
+import { format } from "date-fns";
 
 interface ParticipantData {
   name: string;
@@ -32,6 +35,9 @@ export const RentalPage = () => {
   const [participantsCount, setParticipantsCount] = useState(0);
   const [selectedTime, setSelectedTime] = useState("08:00");
   const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  console.log(bookingData);
 
   const [participantsData, setParticipantsData] = useState<ParticipantData[]>(
     () =>
@@ -67,6 +73,10 @@ export const RentalPage = () => {
         setSelectedTime={setSelectedTime}
         fullName={fullName}
         setFullName={setFullName}
+        email={email}
+        setEmail={setEmail}
+        phoneNumber={phoneNumber}
+        setPhoneNumber={setPhoneNumber}
       />
 
       <h3 className={styles.participantTitle}>Participants & Equipment</h3>
@@ -88,15 +98,35 @@ export const RentalPage = () => {
           {hasSelectedBoard && (
             <OrderSummaryTotal
               participants={participantsData}
-              onContinue={() => {
-                navigate("/payment", {
-                  state: {
-                    ...bookingData,
-                    participantsData,
-                    selectedTime,
-                    fullName,
-                  },
-                });
+              onContinue={async () => {
+                const payload = {
+                  fullName,
+                  rentalDate: bookingData?.selectedDate
+                    ? format(new Date(bookingData.selectedDate), "yyyy-MM-dd")
+                    : "",
+                  issuanceTime: selectedTime,
+                  email,
+                  phoneNumber,
+                  participants: transformParticipants(participantsData),
+                };
+
+                const result = await createBooking(payload);
+
+                if (result) {
+                  navigate("/payment", {
+                    state: {
+                      ...bookingData,
+                      participantsData,
+                      selectedTime,
+                      fullName,
+                      email,
+                      phoneNumber,
+                      bookingId: result.id,
+                    },
+                  });
+                } else {
+                  alert("Something went wrong, please try again.");
+                }
               }}
             />
           )}

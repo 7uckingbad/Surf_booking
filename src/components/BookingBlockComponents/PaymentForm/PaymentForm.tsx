@@ -1,17 +1,29 @@
-import { useState } from "react";
 import styles from "./PaymentForm.module.scss";
 import lockIMG from "../../../assets/RentalPageImgs/lockIMG.svg";
+import { useState } from "react";
 
 interface PaymentFormProps {
-  initialFullName?: string;
+  fullName: string;
+  setFullName: (name: string) => void;
+  cardNumber: string;
+  setCardNumber: (num: string) => void;
+  expiryDate: string;
+  setExpiryDate: (date: string) => void;
+  billingCountry: string;
+  setBillingCountry: (country: string) => void;
 }
 
-export const PaymentForm = ({ initialFullName = "" }: PaymentFormProps) => {
-  const [fullName, setFullName] = useState(initialFullName);
-  const [cardNumber, setCardNumber] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
+export const PaymentForm = ({
+  fullName,
+  setFullName,
+  cardNumber,
+  setCardNumber,
+  expiryDate,
+  setExpiryDate,
+  billingCountry,
+  setBillingCountry,
+}: PaymentFormProps) => {
   const [cvv, setCvv] = useState("");
-  const [billingCountry, setBillingCountry] = useState("Ukraine");
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   return (
