@@ -83,7 +83,10 @@ export const ParticipantCard = ({
                 type="button"
                 className={styles.hoursButton}
                 onClick={() =>
-                  onChange({ ...data, hours: Math.max(1, data.hours - 1) })
+                  onChange({
+                    ...data,
+                    hours: Math.max(1, data.hours - 1),
+                  })
                 }
                 disabled={data.hours <= 1}
               >
@@ -93,7 +96,13 @@ export const ParticipantCard = ({
               <button
                 type="button"
                 className={styles.hoursButton}
-                onClick={() => onChange({ ...data, hours: data.hours + 1 })}
+                onClick={() =>
+                  onChange({
+                    ...data,
+                    hours: data.hours + 1,
+                    withInstructor: true,
+                  })
+                }
               >
                 +
               </button>
