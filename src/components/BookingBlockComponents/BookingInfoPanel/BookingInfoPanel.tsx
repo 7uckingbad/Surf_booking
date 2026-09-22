@@ -5,6 +5,7 @@ import timer from "../../../assets/RentalPageImgs/ClocksImg.svg";
 import arrow from "../../../assets/RentalPageImgs/hugeicons_arrow-down-01.svg";
 import peoples from "../../../assets/RentalPageImgs/PeoplesImg.svg";
 import styles from "./BookingInfoPanel.module.scss";
+import { useIsMobile } from "../../../hooks/useIsMobile";
 
 interface BookingInfoPanelProps {
   selectedDate: Date | string | undefined;
@@ -27,6 +28,7 @@ export const BookingInfoPanel = ({
   onTimeChange,
   onParticipantsChange,
 }: BookingInfoPanelProps) => {
+  const isMobile = useIsMobile();
   return (
     <div className={styles.infoPanel}>
       <div className={styles.infoItem}>
@@ -34,7 +36,8 @@ export const BookingInfoPanel = ({
         <div>
           <span className={styles.infoLabel}>Rental Date</span>
           <span className={styles.infoValue}>
-            {selectedDate && format(new Date(selectedDate), "MMMM d")}
+            {selectedDate &&
+              format(new Date(selectedDate), isMobile ? "MMM d" : "MMMM d")}
           </span>
         </div>
       </div>
@@ -57,7 +60,7 @@ export const BookingInfoPanel = ({
           <span className={styles.infoLabel}>Number of participants</span>
           {readonly ? (
             <span className={styles.infoValue}>
-              Persons {participantsCount}
+              {isMobile ? participantsCount : `Persons ${participantsCount}`}
             </span>
           ) : (
             <PeopleDropdown

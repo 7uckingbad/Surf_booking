@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { Loader } from "./components/Loader/Loader";
 import { Footer } from "./components/Footer/Footer";
+import { ChatWidget } from "./components/ChatWidget/ChatWidget";
 
 const Homepage = lazy(() =>
   import("./pages/HomePage/Homepage").then((m) => ({ default: m.Homepage })),
@@ -44,6 +45,7 @@ function App() {
     <>
       {isPageLoading && <Loader />}
       <Header />
+      <ChatWidget />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Homepage />} />

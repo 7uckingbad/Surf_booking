@@ -1,8 +1,9 @@
 import styles from "./Hero.module.scss";
 import heroImage from "../../assets/heroLogo/herobackGround.svg";
-import buttonImg from "../../assets/heroLogo/heroButton.svg";
+// import buttonImg from "../../assets/heroLogo/heroButton.svg";
 import heroLogo from "../../assets/heroLogo/mainLogo.svg";
 import heroImageMob from "../../assets/heroLogo/mobileHeroIMG.svg";
+import vector from "../../assets/IntroSectionImages/Vector.svg";
 
 export const Hero = () => {
   return (
@@ -18,7 +19,7 @@ export const Hero = () => {
       </div>
       <button className={styles.swellButton}>
         Rent Now
-        <img src={buttonImg} alt="Buttom Image" className={styles.img} />
+        <img src={vector} alt="Buttom Image" className={styles.img} />
       </button>
     </section>
   );
