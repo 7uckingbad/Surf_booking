@@ -15,12 +15,12 @@ export const OrderSummaryTotal = ({
   const boardTotal = participants.reduce((sum, p) => {
     const board = BOARD_OPTIONS.find((b) => b.id === p.boardId);
     if (!board) return sum;
-    return sum + board.price * p.hours;
+    return sum + board.price; // убрал * p.hours
   }, 0);
 
   const instructorTotal = participants.reduce((sum, p) => {
     if (!p.withInstructor) return sum;
-    return sum + INSTRUCTOR_PRICE * p.hours;
+    return sum + INSTRUCTOR_PRICE * p.hours; // это остаётся как было
   }, 0);
 
   const total = boardTotal + instructorTotal;

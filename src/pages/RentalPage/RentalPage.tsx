@@ -32,7 +32,7 @@ export const RentalPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const bookingData = location.state;
-  const [participantsCount, setParticipantsCount] = useState(0);
+  const [participantsCount, setParticipantsCount] = useState(1);
   const [selectedTime, setSelectedTime] = useState("08:00");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");

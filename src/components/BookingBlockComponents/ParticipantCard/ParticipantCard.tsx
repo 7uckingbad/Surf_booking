@@ -24,8 +24,7 @@ export const ParticipantCard = ({
   const selectedBoard = BOARD_OPTIONS.find((b) => b.id === data.boardId);
   const boardPrice = selectedBoard?.price ?? 0;
   const instructorPrice = data.withInstructor ? INSTRUCTOR_PRICE : 0;
-  const total = (boardPrice + instructorPrice) * data.hours;
-
+  const total = boardPrice + instructorPrice * data.hours;
   return (
     <div className={styles.participantCard}>
       <h4 className={styles.number}>{number}</h4>
