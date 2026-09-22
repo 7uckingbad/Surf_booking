@@ -14,7 +14,7 @@ export function usePersistedState<T>(key: string, defaultValue: T) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch {
-      // localStorage может быть недоступен
+      
     }
   }, [key, value]);
 

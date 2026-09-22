@@ -144,6 +144,9 @@ export const ChatWidget = () => {
                         isMe ? styles.messageRowMe : ""
                       }`}
                     >
+                      <div className={styles.avatar}>
+                        {msg.sender.charAt(0).toUpperCase()}
+                      </div>
                       <div
                         className={
                           isMe ? styles.messageBubbleMe : styles.messageBubble

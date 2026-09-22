@@ -45,10 +45,10 @@
       margin-top: 16px;
       padding-right: 4px;
 
-      scrollbar-width: none; // Firefox
-      -ms-overflow-style: none; // IE/Edge
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       &::-webkit-scrollbar {
-        display: none; // Chrome/Safari
+        display: none;
       }
     }
 
@@ -214,4 +214,25 @@
     width: 56px;
     height: 56px;
   }
+}
+
+.messageRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #00bab9;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "satoshi", serif;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
 }

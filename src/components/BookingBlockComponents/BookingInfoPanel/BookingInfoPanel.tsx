@@ -1,7 +1,7 @@
 // src/components/BookingBlockComponents/BookingInfoPanel/BookingInfoPanel.tsx
 import { format } from "date-fns";
-import calendar from "../../../assets/RentalPageImgs/ClocksImg.svg";
 import timer from "../../../assets/RentalPageImgs/ClocksImg.svg";
+import calendar from "../../../assets/calendar.svg";
 import arrow from "../../../assets/RentalPageImgs/hugeicons_arrow-down-01.svg";
 import peoples from "../../../assets/RentalPageImgs/PeoplesImg.svg";
 import styles from "./BookingInfoPanel.module.scss";
