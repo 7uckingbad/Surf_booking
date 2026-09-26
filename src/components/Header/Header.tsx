@@ -33,7 +33,6 @@ export const Header = () => {
     }
   };
 
-  // const isRentalPage = location.pathname === "/rental";
   const isBookingPage = ["/rental", "/payment", "/confirmed"].includes(
     location.pathname,
   );
@@ -50,7 +49,7 @@ export const Header = () => {
                 to={item.to}
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-140}
                 duration={1000}
                 activeClass={styles.activeLink}
                 className={styles.link}
@@ -90,7 +89,7 @@ export const Header = () => {
                   to={item.to}
                   spy={true}
                   smooth={true}
-                  offset={-70}
+                  offset={-140}
                   duration={1000}
                   activeClass={styles.mobileActiveLink}
                   className={styles.mobileMenuLink}

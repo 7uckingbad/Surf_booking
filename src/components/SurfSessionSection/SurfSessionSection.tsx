@@ -74,7 +74,7 @@ export const SurfSessionSection = ({
   }, [selectedDate]);
 
   return (
-    <section className={styles.mainSection}>
+    <section className={styles.mainSection} id="forecast">
       <h2 className={styles.h2Title}>PLAN YOUR SURF SESSION</h2>
 
       <div className={styles.twoColumns}>

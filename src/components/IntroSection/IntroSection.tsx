@@ -4,6 +4,7 @@ import firstImage from "../../assets/IntroSectionImages/1.svg";
 import secondImage from "../../assets/IntroSectionImages/2.svg";
 import thirdImage from "../../assets/IntroSectionImages/3.svg";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
+import { Link } from "react-scroll";
 
 export const IntroSection = () => {
   return (
@@ -53,10 +54,16 @@ export const IntroSection = () => {
             </div>
           </div>
 
-          <button className={styles.forecastButton}>
+          <Link
+            to="forecast"
+            smooth={true}
+            duration={1000}
+            offset={-140}
+            className={styles.forecastButton}
+          >
             Check Forecast
             <img src={vector} alt="" />
-          </button>
+          </Link>
         </div>
 
         <img src={rightimage} alt="Surfboards" className={styles.surfImage} />

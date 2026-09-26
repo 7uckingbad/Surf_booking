@@ -1,9 +1,9 @@
 import styles from "./Hero.module.scss";
 import heroImage from "../../assets/heroLogo/herobackGround.svg";
-// import buttonImg from "../../assets/heroLogo/heroButton.svg";
 import heroLogo from "../../assets/heroLogo/mainLogo.svg";
 import heroImageMob from "../../assets/heroLogo/mobileHeroIMG.svg";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
+import { Link } from "react-scroll";
 
 export const Hero = () => {
   return (
@@ -17,10 +17,16 @@ export const Hero = () => {
           Your best ride starts here. Rent surfboards online in a few clicks
         </p>
       </div>
-      <button className={styles.swellButton}>
+      <Link
+        to="forecast"
+        smooth={true}
+        duration={1000}
+        offset={-140}
+        className={styles.swellButton}
+      >
         Rent Now
         <img src={vector} alt="Buttom Image" className={styles.img} />
-      </button>
+      </Link>
     </section>
   );
 };

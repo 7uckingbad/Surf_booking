@@ -4,6 +4,7 @@ import { Header } from "./components/Header/Header";
 import { Loader } from "./components/Loader/Loader";
 import { Footer } from "./components/Footer/Footer";
 import { ChatWidget } from "./components/ChatWidget/ChatWidget";
+import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 
 const Homepage = lazy(() =>
   import("./pages/HomePage/Homepage").then((m) => ({ default: m.Homepage })),
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       {isPageLoading && <Loader />}
       <Header />
       <ChatWidget />

@@ -157,10 +157,13 @@ export const ChatWidget = () => {
                         </span>
                         <p className={styles.messageText}>{msg.content}</p>
                         <span className={styles.messageTime}>
-                          {new Date(msg.timestamp).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}
+                          {new Date(msg.timestamp + "Z").toLocaleTimeString(
+                            [],
+                            {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            },
+                          )}
                         </span>
                       </div>
                     </div>

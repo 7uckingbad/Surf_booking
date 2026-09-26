@@ -62,7 +62,7 @@ export const SurfCalendar = ({
         onSelect={onSelect}
         weekStartsOn={1}
         showOutsideDays={true}
-        disableNavigation={true}
+        disableNavigation={false}
         disabled={isDateDisabled}
         components={{
           DayButton: CustomDayButton,
