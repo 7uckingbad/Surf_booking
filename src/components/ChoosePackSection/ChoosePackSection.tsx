@@ -53,7 +53,7 @@ export const ChoosePackSection = ({
   const handleBookNowPerfBoard = () => {
     navigate("/rental", {
       state: {
-        packageTitle: "Perfomance Pack",
+        packageTitle: "Performance Pack",
         basePrice: 70,
         withInstructor: performanceInstructor,
         selectedDate: selectedDate,

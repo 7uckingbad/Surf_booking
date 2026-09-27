@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { createBooking } from "../../api/api";
 import { transformParticipants } from "../../api/utils/transformParticipants";
 import { format } from "date-fns";
+import { BOARD_OPTIONS } from "../../data/board";
 
 interface ParticipantData {
   name: string;
@@ -28,6 +29,20 @@ const createEmptyParticipant = (): ParticipantData => ({
   hours: 1,
 });
 
+const createInitialParticipant = (bookingData: any): ParticipantData => {
+  const matchedBoard = BOARD_OPTIONS.find(
+    (b) =>
+      b.fullLabel === bookingData?.packageTitle ||
+      b.shortLabel === bookingData?.packageTitle,
+  );
+
+  return {
+    name: "",
+    boardId: matchedBoard?.id ?? "",
+    withInstructor: bookingData?.withInstructor ?? false,
+    hours: 1,
+  };
+};
 export const RentalPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,7 +56,11 @@ export const RentalPage = () => {
 
   const [participantsData, setParticipantsData] = useState<ParticipantData[]>(
     () =>
-      Array.from({ length: participantsCount }, () => createEmptyParticipant()),
+      Array.from({ length: participantsCount }, (_, i) =>
+        i === 0
+          ? createInitialParticipant(bookingData)
+          : createEmptyParticipant(),
+      ),
   );
 
   const [syncedCount, setSyncedCount] = useState(participantsCount);
