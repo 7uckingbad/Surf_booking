@@ -138,3 +138,63 @@
     }
   }
 }
+
+.carousel {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 12px;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+}
+
+.arrowLeft {
+  left: -35px;
+
+  img {
+    transform: scaleX(-1);
+  }
+}
+
+.arrowRight {
+  right: -35px;
+}
+
+.arrowHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .arrow img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .arrowLeft {
+    left: -8px;
+  }
+
+  .arrowRight {
+    right: -8px;
+  }
+}

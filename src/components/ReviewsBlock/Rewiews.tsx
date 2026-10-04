@@ -1,5 +1,5 @@
 import styles from "./Reviews.module.scss";
-import plusImg from "../../assets/reviewsBlockImg/plus.svg";
+// import plusImg from "../../assets/reviewsBlockImg/plus.svg";
 import review1 from "../../assets/reviewsBlockImg/Review_Card_1.svg";
 import review2 from "../../assets/reviewsBlockImg/Review_Card_2.svg";
 import review3 from "../../assets/reviewsBlockImg/Review_Card_3.svg";
@@ -7,6 +7,7 @@ import review4 from "../../assets/reviewsBlockImg/Review_Card_4.svg";
 import review5 from "../../assets/reviewsBlockImg/Review_Card_5.svg";
 import review6 from "../../assets/reviewsBlockImg/Review_Card_6.svg";
 import review7 from "../../assets/reviewsBlockImg/Review_Card_7.svg";
+import reviewsArrow from "../../assets/reviewsBlockImg/hugeicons_arrow-right-01.svg";
 import { useRef, useState } from "react";
 
 export const ReviewsBlock = () => {
@@ -23,6 +24,11 @@ export const ReviewsBlock = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+
+  const handleScroll = () => {
+    setShowLeftArrow((scrollRef.current?.scrollLeft ?? 0) > 10);
+  };
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
@@ -43,6 +49,20 @@ export const ReviewsBlock = () => {
     setIsDragging(false);
   };
 
+  const scrollByCard = (direction: 1 | -1) => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const card = container.children[1] as HTMLElement | undefined;
+    const cardWidth = card?.clientWidth ?? 280;
+    const gap = 24;
+
+    container.scrollBy({
+      left: direction * (cardWidth + gap),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className={styles.reviewsSection}>
       <div className={styles.textBlock}>
@@ -55,27 +75,43 @@ export const ReviewsBlock = () => {
         <p className={styles.rating}>4.9 out of 5 based on 200+ reviews</p>
       </div>
 
-      <div
-        ref={scrollRef}
-        className={styles.reviewsScroll}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-      >
-        <div className={styles.shareCard}>
-          <img src={plusImg} alt="" className={styles.plusImg} />
-          <button className={styles.shareButton}>Share your story</button>
+      <div className={styles.carousel}>
+        <button
+          className={`${styles.arrow} ${styles.arrowLeft} ${
+            showLeftArrow ? "" : styles.arrowHidden
+          }`}
+          onClick={() => scrollByCard(-1)}
+          aria-label="Previous review"
+        >
+          <img src={reviewsArrow} alt="" />
+        </button>
+
+        <div
+          ref={scrollRef}
+          className={styles.reviewsScroll}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onScroll={handleScroll}
+        >
+          {reviewsImg.map((image, index) => (
+            <img
+              src={image}
+              alt="Review"
+              key={index}
+              className={styles.reviewCard}
+            />
+          ))}
         </div>
 
-        {reviewsImg.map((image, index) => (
-          <img
-            src={image}
-            alt="Review"
-            key={index}
-            className={styles.reviewCard}
-          />
-        ))}
+        <button
+          className={`${styles.arrow} ${styles.arrowRight}`}
+          onClick={() => scrollByCard(1)}
+          aria-label="Next review"
+        >
+          <img src={reviewsArrow} alt="" />
+        </button>
       </div>
     </section>
   );
