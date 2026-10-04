@@ -43,10 +43,11 @@
 
     .infoCardTitle {
       font-family: "satoshi", serif;
-      font-size: 32px;
+      font-size: 28px;
       line-height: 130%;
       letter-spacing: 0%;
       color: #09101e;
+      font-weight: 900;
     }
 
     .descriptionBlock {
@@ -132,15 +133,23 @@
     }
   }
 }
-.price {
+
+.priceRow {
   margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.price {
   font-family: "satoshi", serif;
   font-size: 32px;
   line-height: 130%;
   font-weight: 900;
 }
+
 .bookButton {
-  margin-top: 32px;
   font-family: "satoshi", serif;
   font-weight: 700;
   font-size: 20px;
@@ -157,7 +166,6 @@
   padding: 20px;
   cursor: pointer;
   transition: background-color 0.5s ease;
-  align-self: flex-start;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 
   &:hover {
@@ -168,6 +176,7 @@
     transform: scale(0.97);
   }
 }
+
 .infoCardRightSide {
   position: absolute;
   top: 50%;
@@ -185,10 +194,11 @@
 
   .infoCardTitle {
     font-family: "satoshi", serif;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 130%;
     letter-spacing: 0%;
     color: #09101e;
+    font-weight: 900;
   }
 
   .descriptionBlock {
@@ -292,6 +302,7 @@
         height: 480px;
       }
     }
+
     .infoCard {
       position: absolute;
       top: 50%;
@@ -324,6 +335,7 @@
       }
     }
   }
+
   .infoCardRightSide {
     position: absolute;
     top: 50%;
@@ -355,22 +367,21 @@
     }
   }
 
+  .priceRow {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
   .price {
-    // margin-top: 16px;
     font-size: 22px;
+    white-space: nowrap;
   }
 
   .bookButton {
-    margin-top: 16px;
     width: 100%;
     font-size: 16px;
     padding: 16px;
   }
-}
-.priceRow {
-  // margin-top: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
 }

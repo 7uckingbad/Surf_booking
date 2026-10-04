@@ -10,13 +10,13 @@ export const Footer = () => {
     <section className={styles.footer}>
       <div className={styles.threeColumns}>
         <div className={styles.content}>
-          <h2 className={styles.footerTitle}>Freedom Surf</h2>
-          <p className={styles.mainText}>Ride the perfect wave.</p>
+          {/* <h2 className={styles.footerTitle}>Freedom Surf</h2> */}
           <img
             src={footerImg}
             alt="Footer Image"
             className={styles.footerImage}
           />
+          <p className={styles.mainText}>Ride the perfect wave.</p>
         </div>
 
         <div className={styles.navConnectRow}>

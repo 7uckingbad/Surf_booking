@@ -1,7 +1,7 @@
 import styles from "./IntroSection.module.scss";
 import rightimage from "../../assets/IntroSectionImages/boards2.svg";
 import firstImage from "../../assets/IntroSectionImages/1.svg";
-import secondImage from "../../assets/IntroSectionImages/2.svg";
+import secondImage from "../../assets/IntroSectionImages/hugeicons_calendar-analysis.svg";
 import thirdImage from "../../assets/IntroSectionImages/3.svg";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
 import { Link } from "react-scroll";

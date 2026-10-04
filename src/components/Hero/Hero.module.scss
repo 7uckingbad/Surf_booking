@@ -30,8 +30,8 @@
   letter-spacing: 0%;
   border: 1px solid white;
   border-radius: 100px;
-  background-color: #02A4A4;
-  color: white;
+  background-color: #ffffff;
+  color: #02a4a4;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -40,6 +40,7 @@
   transition: background-color 0.5s ease;
   &:hover {
     background-color: #00a885;
+    color: white;
   }
   &:active {
     background-color: #005454;

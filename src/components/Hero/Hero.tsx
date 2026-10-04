@@ -2,7 +2,7 @@ import styles from "./Hero.module.scss";
 import heroImage from "../../assets/heroLogo/herobackGround.svg";
 import heroLogo from "../../assets/heroLogo/mainLogo.svg";
 import heroImageMob from "../../assets/heroLogo/mobileHeroIMG.svg";
-import vector from "../../assets/IntroSectionImages/Vector.svg";
+import vector from '../../assets/heroFingers.svg'
 import { Link } from "react-scroll";
 
 export const Hero = () => {
