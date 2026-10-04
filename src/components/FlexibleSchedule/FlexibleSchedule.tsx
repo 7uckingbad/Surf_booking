@@ -1,5 +1,6 @@
 import styles from "./FlexibleSchedule.module.scss";
-import flexibleImg from "../../assets/AboutLessonsImg/flexible.svg";
+// import flexibleImg from "../../assets/AboutLessonsImg/flexible.svg";
+import flexImg from "../../assets/AboutLessonsImg/thitdShit.avif";
 
 export const FlexibleSchedule = () => {
   return (
@@ -9,7 +10,7 @@ export const FlexibleSchedule = () => {
         We work with your schedule, so you can choose a convenient time for a
         lesson.
       </p>
-      <img src={flexibleImg} alt="" className={styles.flexibleImg} />
+      <img src={flexImg} alt="" className={styles.flexibleImg} />
     </section>
   );
 };
