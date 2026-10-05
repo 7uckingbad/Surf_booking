@@ -96,3 +96,14 @@
     font-size: 14px;
   }
 }
+
+// Ошибки валидации
+.formInput.inputError {
+  border-color: #e5484d;
+}
+
+.errorText {
+  font-size: 12px;
+  font-family: "satoshi", serif;
+  color: #e5484d;
+}

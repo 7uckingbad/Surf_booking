@@ -1,6 +1,6 @@
 import styles from "./PaymentForm.module.scss";
 import lockIMG from "../../../assets/RentalPageImgs/lockIMG.svg";
-import { useState } from "react";
+import type { FormErrors } from "../../../utils/validation";
 
 interface PaymentFormProps {
   fullName: string;
@@ -9,8 +9,13 @@ interface PaymentFormProps {
   setCardNumber: (num: string) => void;
   expiryDate: string;
   setExpiryDate: (date: string) => void;
+  cvv: string;
+  setCvv: (cvv: string) => void;
   billingCountry: string;
   setBillingCountry: (country: string) => void;
+  agreedToTerms: boolean;
+  setAgreedToTerms: (agreed: boolean) => void;
+  errors: FormErrors;
 }
 
 export const PaymentForm = ({
@@ -20,11 +25,17 @@ export const PaymentForm = ({
   setCardNumber,
   expiryDate,
   setExpiryDate,
+  cvv,
+  setCvv,
   billingCountry,
   setBillingCountry,
+  agreedToTerms,
+  setAgreedToTerms,
+  errors,
 }: PaymentFormProps) => {
-  const [cvv, setCvv] = useState("");
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  // Класс для красной рамки, если у поля есть ошибка
+  const inputClass = (field: string) =>
+    `${styles.formInput} ${errors[field] ? styles.inputError : ""}`;
 
   return (
     <div className={styles.paymentForm}>
@@ -40,19 +51,29 @@ export const PaymentForm = ({
           placeholder="John Doe"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
-          className={styles.formInput}
+          className={inputClass("fullName")}
+          aria-invalid={!!errors.fullName}
         />
+        {errors.fullName && (
+          <span className={styles.errorText}>{errors.fullName}</span>
+        )}
       </div>
 
       <div className={styles.formGroup}>
         <label className={styles.formLabel}>Card number</label>
         <input
           type="text"
+          inputMode="numeric"
           placeholder="0000 0000 0000 0000"
           value={cardNumber}
           onChange={(e) => setCardNumber(e.target.value)}
-          className={styles.formInput}
+          className={inputClass("cardNumber")}
+          aria-invalid={!!errors.cardNumber}
+          maxLength={19}
         />
+        {errors.cardNumber && (
+          <span className={styles.errorText}>{errors.cardNumber}</span>
+        )}
       </div>
 
       <div className={styles.rowGroup}>
@@ -63,19 +84,28 @@ export const PaymentForm = ({
             placeholder="MM/YY"
             value={expiryDate}
             onChange={(e) => setExpiryDate(e.target.value)}
-            className={styles.formInput}
+            className={inputClass("expiryDate")}
+            aria-invalid={!!errors.expiryDate}
+            maxLength={5}
           />
+          {errors.expiryDate && (
+            <span className={styles.errorText}>{errors.expiryDate}</span>
+          )}
         </div>
 
         <div className={styles.formGroup}>
           <label className={styles.formLabel}>CVV</label>
           <input
             type="text"
+            inputMode="numeric"
             placeholder="•••"
             value={cvv}
             onChange={(e) => setCvv(e.target.value)}
-            className={styles.formInput}
+            className={inputClass("cvv")}
+            aria-invalid={!!errors.cvv}
+            maxLength={3}
           />
+          {errors.cvv && <span className={styles.errorText}>{errors.cvv}</span>}
         </div>
       </div>
 
@@ -98,12 +128,16 @@ export const PaymentForm = ({
           type="checkbox"
           checked={agreedToTerms}
           onChange={(e) => setAgreedToTerms(e.target.checked)}
+          aria-invalid={!!errors.agreedToTerms}
         />
         <span>
           I agree to the <a href="#">Terms of Service</a> and{" "}
           <a href="#">Cancellation Policy</a>.
         </span>
       </label>
+      {errors.agreedToTerms && (
+        <span className={styles.errorText}>{errors.agreedToTerms}</span>
+      )}
     </div>
   );
 };

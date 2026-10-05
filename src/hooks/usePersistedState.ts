@@ -13,9 +13,7 @@ export function usePersistedState<T>(key: string, defaultValue: T) {
   useEffect(() => {
     try {
       localStorage.setItem(key, JSON.stringify(value));
-    } catch {
-      
-    }
+    } catch {}
   }, [key, value]);
 
   return [value, setValue] as const;

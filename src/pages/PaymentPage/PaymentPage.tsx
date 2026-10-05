@@ -7,6 +7,8 @@ import { PaymentForm } from "../../components/BookingBlockComponents/PaymentForm
 import lockIMG from "../../assets/RentalPageImgs/lockIMG.svg";
 import { PaymentOrderSummary } from "../../components/BookingBlockComponents/PaymentOrderSummary/PaymentOrderSummary";
 import { createPayment } from "../../api/api";
+import { hasErrors, validatePayment } from "../../utils/validation";
+import { scrollToFirstError } from "../../utils/scrollToFirstError";
 
 export const PaymentPage = () => {
   const location = useLocation();
@@ -17,13 +19,26 @@ export const PaymentPage = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [billingCountry, setBillingCountry] = useState("Ukraine");
+  const [cvv, setCvv] = useState("");
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+
+
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+  const formValues = { fullName, cardNumber, expiryDate, cvv, agreedToTerms };
+  const errors = submitAttempted ? validatePayment(formValues) : {};
 
   const handlePay = async () => {
+    setSubmitAttempted(true);
+    if (hasErrors(validatePayment(formValues))) {
+      scrollToFirstError();
+      return;
+    }
+
     const [month, year] = expiryDate.split("/");
     const formattedExpiryDate = month && year ? `20${year}-${month}` : "";
     const payload = {
       bookingId: bookingData?.bookingId,
-      cardNumber,
+      cardNumber: cardNumber.replace(/\s/g, ""),
       fullName,
       expiryDate: formattedExpiryDate,
       billingCountry,
@@ -51,7 +66,9 @@ export const PaymentPage = () => {
           />
           <PaymentOrderSummary
             participants={bookingData?.participantsData ?? []}
-            onBack={() => navigate("/rental")}
+            onBack={() =>
+              navigate("/rental", { state: bookingData, replace: true })
+            }
             onPay={handlePay}
           />
         </div>
@@ -76,8 +93,13 @@ export const PaymentPage = () => {
             setCardNumber={setCardNumber}
             expiryDate={expiryDate}
             setExpiryDate={setExpiryDate}
+            cvv={cvv}
+            setCvv={setCvv}
             billingCountry={billingCountry}
             setBillingCountry={setBillingCountry}
+            agreedToTerms={agreedToTerms}
+            setAgreedToTerms={setAgreedToTerms}
+            errors={errors}
           />
         </div>
       </div>

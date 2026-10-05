@@ -1,3 +1,7 @@
+import sofboardPaymentImg from "../assets/ChooseYourPackImg/SoftBoardImg.svg";
+import hardboardPaymentImg from "../assets/ChooseYourPackImg/hardBoardImg.svg";
+import perfomancePaymentImg from "../assets/ChooseYourPackImg/PerfomanceImg.svg";
+
 export interface BoardOption {
   id: string;
   packId: number;
@@ -5,6 +9,7 @@ export interface BoardOption {
   shortLabel: string;
   fullLabel: string;
   price: number;
+  image: string;
 }
 
 export const BOARD_OPTIONS: BoardOption[] = [
@@ -15,6 +20,7 @@ export const BOARD_OPTIONS: BoardOption[] = [
     shortLabel: "Softboard Rental",
     fullLabel: "Beginner Softboard Rental",
     price: 40,
+    image: sofboardPaymentImg,
   },
   {
     id: "intermediate-hard",
@@ -23,6 +29,7 @@ export const BOARD_OPTIONS: BoardOption[] = [
     shortLabel: "Hardboard Rental",
     fullLabel: "Intermediate Hardboard Rental",
     price: 55,
+    image: hardboardPaymentImg,
   },
   {
     id: "pro-performance",
@@ -31,6 +38,7 @@ export const BOARD_OPTIONS: BoardOption[] = [
     shortLabel: "Performance Pack",
     fullLabel: "Pro Performance Pack",
     price: 70,
+    image: perfomancePaymentImg,
   },
 ];
 

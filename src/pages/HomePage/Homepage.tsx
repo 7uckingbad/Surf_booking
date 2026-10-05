@@ -1,5 +1,3 @@
-// import { Footer } from "react-day-picker";
-// import { useState } from "react";
 import { AboutLessonsBlock } from "../../components/AboutLessonsBlock/AboutLessonsBlock";
 import { BenefitsBlock } from "../../components/BenefitsBlock/BenefitsBlock";
 import { ChoosePackSection } from "../../components/ChoosePackSection/ChoosePackSection";
@@ -34,7 +32,9 @@ export const Homepage = () => {
       <AboutLessonsBlock />
       <BenefitsBlock />
       <FlexibleSchedule />
-      <ReviewsBlock />
+      <div id="reviews">
+        <ReviewsBlock />
+      </div>
       <LocationSection />
     </>
   );

@@ -3,9 +3,13 @@ import footerImg from "../../assets/footerImg/footerNewLogo.svg";
 import instImg from "../../assets/footerImg/instagramm.svg";
 import telegaImg from "../../assets/footerImg/telega.svg";
 import emailImg from "../../assets/footerImg/mailIcon.svg";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { scroller } from "react-scroll";
 
 export const Footer = () => {
+  const goTo = (to: string) => {
+    scroller.scrollTo(to, { smooth: true, duration: 1000, offset: -70 });
+  };
   return (
     <section className={styles.footer}>
       <div className={styles.threeColumns}>
@@ -24,16 +28,48 @@ export const Footer = () => {
             <h2 className={styles.navTitle}>Navigation</h2>
             <ul className={styles.navList}>
               <li className={styles.liText}>
-                <NavLink to="/forecast">Forecast</NavLink>
+                <a
+                  href="#forecast"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goTo("forecast");
+                  }}
+                >
+                  Forecast
+                </a>
               </li>
               <li className={styles.liText}>
-                <NavLink to="/rental">Rental</NavLink>
+                <a
+                  href="#rental"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goTo("rental");
+                  }}
+                >
+                  Rental
+                </a>
               </li>
               <li className={styles.liText}>
-                <NavLink to="/location">Location</NavLink>
+                <a
+                  href="#location"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goTo("location");
+                  }}
+                >
+                  Location
+                </a>
               </li>
               <li className={styles.liText}>
-                <NavLink to="/reviews">Reviews</NavLink>
+                <a
+                  href="#reviews"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goTo("reviews");
+                  }}
+                >
+                  Reviews
+                </a>
               </li>
             </ul>
           </div>

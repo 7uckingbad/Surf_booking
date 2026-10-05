@@ -7,8 +7,13 @@ import checked from "../../../assets/RentalPageImgs/Icon hugeicons_tick-01.svg.s
 
 import styles from "./PackageInfo.module.scss";
 import { BookingInfoPanel } from "../BookingInfoPanel/BookingInfoPanel";
+import type { BoardOption } from "../../../data/board";
+import type { FormErrors } from "../../../utils/validation";
 
 interface PackageInfoProps {
+  activeBoard: BoardOption | undefined;
+  selectedDate: string;
+  setSelectedDate: (date: string) => void;
   participantsCount: number;
   setParticipantsCount: (count: number) => void;
   selectedTime: string;
@@ -19,9 +24,13 @@ interface PackageInfoProps {
   setEmail: (email: string) => void;
   phoneNumber: string;
   setPhoneNumber: (phone: string) => void;
+  errors: FormErrors;
 }
 
 export const PackageInfo = ({
+  activeBoard,
+  selectedDate,
+  setSelectedDate,
   participantsCount,
   setParticipantsCount,
   selectedTime,
@@ -32,6 +41,7 @@ export const PackageInfo = ({
   setEmail,
   phoneNumber,
   setPhoneNumber,
+  errors,
 }: PackageInfoProps) => {
   const location = useLocation();
   const bookingData = location.state;
@@ -52,14 +62,18 @@ export const PackageInfo = ({
       descriptions:
         "For intermediate & pro surfers. Premium fiberglass and epoxy boards.",
     },
-    "Perfomance Pack": {
+    "Performance Pack": {
       tags: ["Pro-level board", "For advanced surfers"],
       descriptions:
         "Top-tier board + carbon fins and premium wetsuit included.",
     },
   };
 
-  const currentPackageDetails = packageDetails[bookingData?.packageTitle] || {
+  const packageTitle = activeBoard?.shortLabel ?? bookingData?.packageTitle;
+  const packageImage =
+    activeBoard?.image ?? bookingData?.packageImage ?? surfImg;
+
+  const currentPackageDetails = packageDetails[packageTitle] || {
     tags: [],
     descriptions: "",
   };
@@ -71,12 +85,12 @@ export const PackageInfo = ({
   return (
     <div className={styles.twoColumns}>
       <img
-        src={bookingData?.packageImage || surfImg}
+        src={packageImage}
         alt=""
         className={styles.packageImgDesktop}
       />
       <div className={styles.rightColumn}>
-        <h1 className={styles.title}>{bookingData?.packageTitle}</h1>
+        <h1 className={styles.title}>{packageTitle}</h1>
         <p className={styles.subtitle}>What's included in the package</p>
         <div className={styles.tagsRow}>
           {currentPackageDetails.tags.map((tag, index) => (
@@ -89,15 +103,16 @@ export const PackageInfo = ({
           {currentPackageDetails.descriptions}
         </p>
         <img
-          src={bookingData?.packageImage || surfImg}
+          src={packageImage}
           alt=""
           className={styles.packageImgMobile}
         />
 
         <BookingInfoPanel
-          selectedDate={bookingData?.selectedDate}
+          selectedDate={selectedDate}
           selectedTime={selectedTime}
           participantsCount={participantsCount}
+          onDateChange={setSelectedDate}
           onTimeChange={setSelectedTime}
           onParticipantsChange={setParticipantsCount}
         />
@@ -112,9 +127,13 @@ export const PackageInfo = ({
               placeholder="John Doe"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className={styles.formInput}
+              className={`${styles.formInput} ${errors.fullName ? styles.inputError : ""}`}
+              aria-invalid={!!errors.fullName}
               maxLength={255}
             />
+            {errors.fullName && (
+              <span className={styles.errorText}>{errors.fullName}</span>
+            )}
           </div>
 
           <div className={styles.formGroup}>
@@ -124,14 +143,20 @@ export const PackageInfo = ({
               placeholder="name@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={styles.formInput}
+              className={`${styles.formInput} ${errors.email ? styles.inputError : ""}`}
+              aria-invalid={!!errors.email}
               maxLength={255}
             />
+            {errors.email && (
+              <span className={styles.errorText}>{errors.email}</span>
+            )}
           </div>
 
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Phone Number</label>
-            <div className={styles.phoneRow}>
+            <div
+              className={`${styles.phoneRow} ${errors.phoneNumber ? styles.inputError : ""}`}
+            >
               <select
                 value={countryCode}
                 onChange={(e) => setCountryCode(e.target.value)}
@@ -149,9 +174,13 @@ export const PackageInfo = ({
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 className={styles.formInput}
+                aria-invalid={!!errors.phoneNumber}
                 maxLength={255}
               />
             </div>
+            {errors.phoneNumber && (
+              <span className={styles.errorText}>{errors.phoneNumber}</span>
+            )}
           </div>
         </div>
       </div>

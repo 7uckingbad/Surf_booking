@@ -12,14 +12,28 @@ import { OrderSummaryTotal } from "../../components/BookingBlockComponents/Order
 import { useLocation, useNavigate } from "react-router-dom";
 import { createBooking } from "../../api/api";
 import { transformParticipants } from "../../api/utils/transformParticipants";
-import { format } from "date-fns";
+import { format, isValid } from "date-fns";
 import { BOARD_OPTIONS } from "../../data/board";
+import { hasErrors, validateRental } from "../../utils/validation";
+import { scrollToFirstError } from "../../utils/scrollToFirstError";
 
 interface ParticipantData {
   name: string;
   boardId: string;
   withInstructor: boolean;
   hours: number;
+}
+
+interface RentalLocationState {
+  packageTitle?: string;
+  packageImage?: string;
+  withInstructor?: boolean;
+  selectedDate?: string | Date;
+  selectedTime?: string;
+  participantsData?: ParticipantData[];
+  fullName?: string;
+  email?: string;
+  phoneNumber?: string;
 }
 
 const createEmptyParticipant = (): ParticipantData => ({
@@ -29,7 +43,9 @@ const createEmptyParticipant = (): ParticipantData => ({
   hours: 1,
 });
 
-const createInitialParticipant = (bookingData: any): ParticipantData => {
+const createInitialParticipant = (
+  bookingData: RentalLocationState | null,
+): ParticipantData => {
   const matchedBoard = BOARD_OPTIONS.find(
     (b) =>
       b.fullLabel === bookingData?.packageTitle ||
@@ -43,19 +59,45 @@ const createInitialParticipant = (bookingData: any): ParticipantData => {
     hours: 1,
   };
 };
+
+const getInitialDate = (value: unknown): string => {
+  const today = format(new Date(), "yyyy-MM-dd");
+  if (!value) return today;
+
+  let date: string;
+  if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    date = value;
+  } else {
+    const parsed = new Date(value as string | Date);
+    if (!isValid(parsed)) return today;
+    date = format(parsed, "yyyy-MM-dd");
+  }
+
+  return date < today ? today : date;
+};
+
 export const RentalPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const bookingData = location.state;
-  const [participantsCount, setParticipantsCount] = useState(1);
-  const [selectedTime, setSelectedTime] = useState("08:00");
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  console.log(bookingData);
+  const bookingData = location.state as RentalLocationState | null;
+  const [selectedDate, setSelectedDate] = useState(() =>
+    getInitialDate(bookingData?.selectedDate),
+  );
+  const [participantsCount, setParticipantsCount] = useState<number>(
+    bookingData?.participantsData?.length ?? 1,
+  );
+  const [selectedTime, setSelectedTime] = useState<string>(
+    bookingData?.selectedTime ?? "08:00",
+  );
+  const [fullName, setFullName] = useState<string>(bookingData?.fullName ?? "");
+  const [email, setEmail] = useState<string>(bookingData?.email ?? "");
+  const [phoneNumber, setPhoneNumber] = useState<string>(
+    bookingData?.phoneNumber ?? "",
+  );
 
   const [participantsData, setParticipantsData] = useState<ParticipantData[]>(
     () =>
+      bookingData?.participantsData ??
       Array.from({ length: participantsCount }, (_, i) =>
         i === 0
           ? createInitialParticipant(bookingData)
@@ -81,11 +123,40 @@ export const RentalPage = () => {
     });
   }
   const hasSelectedBoard = participantsData.some((p) => p.boardId);
+
+  const [lastBoardId, setLastBoardId] = useState(
+    () =>
+      BOARD_OPTIONS.find((b) => b.shortLabel === bookingData?.packageTitle)
+        ?.id ??
+      participantsData[0]?.boardId ??
+      "",
+  );
+  const selectedBoardIds = participantsData
+    .map((p) => p.boardId)
+    .filter(Boolean);
+  const activeBoardId = selectedBoardIds.includes(lastBoardId)
+    ? lastBoardId
+    : selectedBoardIds[0];
+  const activeBoard = BOARD_OPTIONS.find((b) => b.id === activeBoardId);
+
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+  const errors = submitAttempted
+    ? validateRental({
+        fullName,
+        email,
+        phoneNumber,
+        participants: participantsData,
+      })
+    : {};
+
   return (
     <div className={styles.rentalBLock}>
       <img src={heroLogo} alt="" className={styles.heroLogo} />
       <Stepper />
       <PackageInfo
+        activeBoard={activeBoard}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
         participantsCount={participantsCount}
         setParticipantsCount={setParticipantsCount}
         selectedTime={selectedTime}
@@ -96,6 +167,7 @@ export const RentalPage = () => {
         setEmail={setEmail}
         phoneNumber={phoneNumber}
         setPhoneNumber={setPhoneNumber}
+        errors={errors}
       />
 
       <h3 className={styles.participantTitle}>Participants & Equipment</h3>
@@ -107,7 +179,11 @@ export const RentalPage = () => {
               key={index}
               number={index + 1}
               data={data}
+              boardError={errors[`board-${index}`]}
               onChange={(updated) => {
+                if (updated.boardId && updated.boardId !== data.boardId) {
+                  setLastBoardId(updated.boardId);
+                }
                 setParticipantsData((prev) =>
                   prev.map((p, i) => (i === index ? updated : p)),
                 );
@@ -118,11 +194,21 @@ export const RentalPage = () => {
             <OrderSummaryTotal
               participants={participantsData}
               onContinue={async () => {
+                setSubmitAttempted(true);
+                const currentErrors = validateRental({
+                  fullName,
+                  email,
+                  phoneNumber,
+                  participants: participantsData,
+                });
+                if (hasErrors(currentErrors)) {
+                  scrollToFirstError();
+                  return;
+                }
+
                 const payload = {
                   fullName,
-                  rentalDate: bookingData?.selectedDate
-                    ? format(new Date(bookingData.selectedDate), "yyyy-MM-dd")
-                    : "",
+                  rentalDate: selectedDate,
                   issuanceTime: selectedTime,
                   email,
                   phoneNumber,
@@ -135,6 +221,11 @@ export const RentalPage = () => {
                   navigate("/payment", {
                     state: {
                       ...bookingData,
+                      selectedDate,
+                      packageTitle:
+                        activeBoard?.shortLabel ?? bookingData?.packageTitle,
+                      packageImage:
+                        activeBoard?.image ?? bookingData?.packageImage,
                       participantsData,
                       selectedTime,
                       fullName,

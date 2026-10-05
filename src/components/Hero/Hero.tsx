@@ -2,10 +2,19 @@ import styles from "./Hero.module.scss";
 import heroImage from "../../assets/heroLogo/herobackGround.svg";
 import heroLogo from "../../assets/heroLogo/mainLogo.svg";
 import heroImageMob from "../../assets/heroLogo/mobileHeroIMG.svg";
-import vector from '../../assets/heroFingers.svg'
-import { Link } from "react-scroll";
+// import vector from "../../assets/heroFingers.svg";
+import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 
 export const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleRentNow = () => {
+    navigate("/rental", {
+      state: { selectedDate: format(new Date(), "yyyy-MM-dd") },
+    });
+  };
+
   return (
     <section className={styles.hero}>
       <img src={heroLogo} alt="" className={styles.heroLogo} />
@@ -17,16 +26,10 @@ export const Hero = () => {
           Your best ride starts here. Rent surfboards online in a few clicks
         </p>
       </div>
-      <Link
-        to="forecast"
-        smooth={true}
-        duration={1000}
-        offset={-140}
-        className={styles.swellButton}
-      >
+      <button className={styles.swellButton} onClick={handleRentNow}>
         Rent Now
-        <img src={vector} alt="Buttom Image" className={styles.img} />
-      </Link>
+        {/* <img src={vector} alt="Buttom Image" className={styles.img} /> */}
+      </button>
     </section>
   );
 };

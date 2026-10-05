@@ -13,12 +13,14 @@ export interface ParticipantData {
 interface ParticipantCardProps {
   number: number;
   data: ParticipantData;
+  boardError?: string;
   onChange: (data: ParticipantData) => void;
 }
 
 export const ParticipantCard = ({
   number,
   data,
+  boardError,
   onChange,
 }: ParticipantCardProps) => {
   const selectedBoard = BOARD_OPTIONS.find((b) => b.id === data.boardId);
@@ -46,7 +48,8 @@ export const ParticipantCard = ({
           <select
             value={data.boardId}
             onChange={(e) => onChange({ ...data, boardId: e.target.value })}
-            className={styles.inputSelect}
+            className={`${styles.inputSelect} ${boardError ? styles.inputError : ""}`}
+            aria-invalid={!!boardError}
           >
             <option value="">Select board</option>
             {BOARD_OPTIONS.map((board) => (
@@ -55,6 +58,9 @@ export const ParticipantCard = ({
               </option>
             ))}
           </select>
+          {boardError && (
+            <span className={styles.errorText}>{boardError}</span>
+          )}
         </div>
 
         <div className={styles.instructorRow}>

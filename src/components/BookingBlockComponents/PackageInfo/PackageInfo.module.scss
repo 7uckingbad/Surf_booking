@@ -45,6 +45,14 @@
   }
 }
 
+// Пропорции картинок пакетов (760×861) — запасная картинка без выбранной
+// доски вписывается в ту же рамку и не растягивается в высоту
+.packageImgDesktop,
+.packageImgMobile {
+  aspect-ratio: 760 / 861;
+  object-fit: contain;
+}
+
 .packageImgDesktop {
   width: 100%;
   max-width: 500px;
@@ -118,6 +126,17 @@
           outline: none;
         }
       }
+    }
+
+    // Стоит после .formInput и .phoneRow, чтобы перебить их рамку
+    .inputError {
+      border-color: #e5484d;
+    }
+
+    .errorText {
+      font-size: 12px;
+      font-family: "satoshi", serif;
+      color: #e5484d;
     }
   }
 }

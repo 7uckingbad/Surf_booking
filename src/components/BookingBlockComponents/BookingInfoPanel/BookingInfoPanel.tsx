@@ -1,5 +1,5 @@
 // src/components/BookingBlockComponents/BookingInfoPanel/BookingInfoPanel.tsx
-import { format } from "date-fns";
+import { addDays, format, parseISO } from "date-fns";
 import timer from "../../../assets/RentalPageImgs/ClocksImg.svg";
 import calendar from "../../../assets/calendar.svg";
 import arrow from "../../../assets/RentalPageImgs/hugeicons_arrow-down-01.svg";
@@ -13,32 +13,46 @@ interface BookingInfoPanelProps {
   participantsCount: number;
   readonly?: boolean;
 
+  onDateChange?: (date: string) => void;
   onTimeChange?: (time: string) => void;
   onParticipantsChange?: (count: number) => void;
 }
 
 const TIME_OPTIONS = ["08:00", "10:00", "12:00", "14:00", "16:00"];
 const PARTICIPANT_OPTIONS = Array.from({ length: 10 }, (_, i) => i + 1);
+const DATE_OPTIONS_COUNT = 8;
+
+const toDate = (value: Date | string) =>
+  typeof value === "string" ? parseISO(value) : value;
 
 export const BookingInfoPanel = ({
   selectedDate,
   selectedTime,
   participantsCount,
   readonly = false,
+  onDateChange,
   onTimeChange,
   onParticipantsChange,
 }: BookingInfoPanelProps) => {
   const isMobile = useIsMobile();
+  const dateFormat = isMobile ? "MMM d" : "MMMM d";
   return (
     <div className={styles.infoPanel}>
       <div className={styles.infoItem}>
         <img src={calendar} alt="" />
-        <div>
+        <div className={styles.dropdownWrapper}>
           <span className={styles.infoLabel}>Rental Date</span>
-          <span className={styles.infoValue}>
-            {selectedDate &&
-              format(new Date(selectedDate), isMobile ? "MMM d" : "MMMM d")}
-          </span>
+          {readonly || !onDateChange ? (
+            <span className={styles.infoValue}>
+              {selectedDate && format(toDate(selectedDate), dateFormat)}
+            </span>
+          ) : (
+            <DateDropdown
+              value={selectedDate as string}
+              dateFormat={dateFormat}
+              onChange={onDateChange}
+            />
+          )}
         </div>
       </div>
 
@@ -75,6 +89,44 @@ export const BookingInfoPanel = ({
 };
 
 import { useState } from "react";
+
+const DateDropdown = ({
+  value,
+  dateFormat,
+  onChange,
+}: {
+  value: string;
+  dateFormat: string;
+  onChange: (date: string) => void;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dateOptions = Array.from({ length: DATE_OPTIONS_COUNT }, (_, i) =>
+    format(addDays(new Date(), i), "yyyy-MM-dd"),
+  );
+  return (
+    <div className={styles.infoValue} onClick={() => setIsOpen(!isOpen)}>
+      {value && format(parseISO(value), dateFormat)}
+      <button className={styles.dropdownArrow}>
+        <img src={arrow} alt="" />
+      </button>
+      {isOpen && (
+        <ul className={styles.dropdownList}>
+          {dateOptions.map((date) => (
+            <li
+              key={date}
+              onClick={() => {
+                onChange(date);
+                setIsOpen(false);
+              }}
+            >
+              {format(parseISO(date), dateFormat)}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 const TimeDropdown = ({
   value,
