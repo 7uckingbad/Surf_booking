@@ -1,6 +1,6 @@
 import styles from "./IntroSection.module.scss";
 import rightimage from "../../assets/IntroSectionImages/boards2.svg";
-import firstImage from "../../assets/IntroSectionImages/1.svg";
+import firstImage from "../../assets/IntroSectionImages/xuinya.svg";
 import secondImage from "../../assets/IntroSectionImages/hugeicons_calendar-analysis.svg";
 import thirdImage from "../../assets/IntroSectionImages/3.svg";
 import vector from "../../assets/IntroSectionImages/Vector.svg";
@@ -16,7 +16,7 @@ export const IntroSection = () => {
           <p className={styles.introText}>
             Check live ocean conditions and book premium surfboards to gear up
             for your next session. Join our community to connect with local
-            surfers and ride the perfect wave in real-time."
+            surfers and ride the perfect wave in real-time.
           </p>
 
           <div className={styles.featureList}>
